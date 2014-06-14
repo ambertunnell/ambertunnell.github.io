@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Flatiron | creating constellations]]></title>
+  <title><![CDATA[Category: Flatiron | amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/flatiron/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-06-11T22:07:51-04:00</updated>
+  <updated>2014-06-14T16:11:57-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
+    <title type="html"><![CDATA[My First Post On Octopress]]></title>
     <link href="http://ambertunnell.github.io/blog/2014/06/03/my-first-post-on-octopress/"/>
     <updated>2014-06-03T22:17:00-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/06/03/my-first-post-on-octopress</id>
