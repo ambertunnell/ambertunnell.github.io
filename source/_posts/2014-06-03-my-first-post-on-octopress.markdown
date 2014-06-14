@@ -1,9 +1,22 @@
 ---
 layout: post
-title: "My First Post On Octopress"
+title: "Awesome Ruby Resources"
 date: 2014-06-03 22:17:00 -0400
 comments: true
-categories: Flatiron School
+categories: [Flatiron School, Ruby] 
 ---
 
-"Hello, World"
+After being at <i>The Flatiron School</i> for 2 weeks, I've come to realize that it's all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here's an on-going list of awesome basic Ruby resources that I've learned about so far.
+
+<h3><a href= "http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html" target="_blank">IRB</a></h3> 
+<p>For weeks before Flatiron, I was beginning to learn Ruby. And when I wanted to know what a Ruby method did, I would often open up another ruby doc in a text editor and then puts the result to the terminal. Then, on the first day of class, I learned about IRB! IRB stands for "interactive ruby," and is a tool that interactively executes Ruby code in the terminal. Just key in "irb" and Ruby away! Now, every time I'm unsure of a piece of code, I simply check it in irb! Such a time-saver!</p>
+
+<h3><a href= "https://rubygems.org/gems/pry" target="_blank">Pry</a></h3> 
+<p>Also extremely useful is the RubyGem Pry. Unlike IRB which is great to check a basic piece of syntax, Pry can actually be run in your program and will tell you what piece of information it receives every step of the way. It's crazy useful, and if you are a Ruby developer, an absolute must in debugging.</p>
+
+<h3><a href= "http://www.rubular.com/" target="_blank">Rubular.com</a></h3>
+<p>If you know anything about Ruby, you'll know about Regular Expressions (aka "Regex"). And if you know anything about Ruby, I'm sure you have a love-hate relationship with them. Ruby is fondly know as being fairly English-y and intuitive, but I don't really consider things that look like this English:</p>
+<p style="text-align: center">/\A[a-z]+\.*[a-z]*@{1}[a-z]+\.[a-z]+\.*[a-z]*\z/</p>
+<p>Regexs are extremely powerful in Ruby, because they let you manipulate data in a very complicated yet precise way. But, often they are long and cumbersome. Enter Rubular! In Rubular, you can build your regexs interactively with the data you are trying to manipulate, and conversely, immediately determine what data an already-constructed regex is trying to gather. It's truly priceless for a dedicated Rubyist.</p>
+
+
