@@ -3,8 +3,8 @@
 # ----------------------- #
 
 url: http://ambertunnell.github.io
-title: creating constellations
-subtitle: my attempt to explain, discuss, and marvel at the magical world of code.
+title: amber tunnell 
+subtitle: a caffeinated coder  
 author: Amber Tunnell
 simple_search: https://www.google.com/search
 description: A Flatiron Student's blog on life, love, and code.
@@ -97,4 +97,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true 
