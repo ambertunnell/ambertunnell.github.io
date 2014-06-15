@@ -1,10 +1,8 @@
-<p class="pull-left">
-  <a href="{{ root_url }}/">{{ site.title }}</a>
-  - Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author }}
-</p>
-<p class="pull-right">
-  <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
-  {% unless site.hide_design_credits %}
-    <span>Designed by <a href="http://www.AdrianArtiles.com">Adrian Artiles</a>.</span>
-  {% endunless %}
+<p>
+  Copyright &copy; {{ site.time | date: "%Y" }} - {% if site.mnml_mailto %}<a href="mailto:{{ site.mnml_mailto }}">{{ site.author }}</a>{% else %} {{ site.author }} {% endif %}<br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  {% if site.mnml_host_name and site.mnml_host_url %}
+	  Hosted by <a href="{{ site.mnml_host_url }}">{{ site.mnml_host_name }}</a>. 
+	  {% endif %}
+  </span>
 </p>
