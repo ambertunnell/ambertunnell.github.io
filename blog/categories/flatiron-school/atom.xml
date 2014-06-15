@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron School | amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-06-15T17:37:33-04:00</updated>
+  <updated>2014-06-15T17:38:42-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -18,7 +18,7 @@
     <link href="http://ambertunnell.github.io/blog/2014/06/03/awesome-ruby-resources/"/>
     <updated>2014-06-03T22:17:00-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/06/03/awesome-ruby-resources</id>
-    <content type="html"><![CDATA[<p>After being at <i>The Flatiron School</i> for 2 weeks, I&rsquo;ve come to realize that it&rsquo;s all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here&rsquo;s an on-going list of awesome basic Ruby resources that I&rsquo;ve learned about so far. If you know of other great resources not yet included, mention them in the comments!</p>
+    <content type="html"><![CDATA[<p>After being at <i>The Flatiron School</i> for two weeks, I&rsquo;ve come to realize that it&rsquo;s all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here&rsquo;s an on-going list of awesome resources for the beginning Rubyist that I&rsquo;ve learned about so far. If you know of other great resources not yet included, mention them in the comments!</p>
 
 <h3><a href= "http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html" target="_blank">IRB</a></h3>
 
