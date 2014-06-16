@@ -331,3 +331,20 @@ h1.entry-title {
           float: right
      }
 }
+
+.about-social-media {
+  margin: 10px 5px 25px;
+  width: 60px;
+  height: 60px;
+  display: inline;
+
+}
+
+a.linkedin { background: url(../../source/images/social_icons/bw-linkedin.png) no-repeat; }
+a.linkedin:hover { background: url(../../source/images/social_icons/linkedin.png), no-repeat; }
+
+a.twitter { background: url(../../source/images/social_icons/bw-twitter.png) no-repeat; }
+a.twitter:hover { background: url(../../source/images/social_icons/twitter.png), no-repeat; }
+
+a.github { background: url(../../source/images/social_icons/bw-github.png) no-repeat; }
+a.github:hover { background: url(../../source/images/social_icons/github.png), no-repeat; }
