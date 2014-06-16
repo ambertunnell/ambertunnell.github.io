@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hidden Ruby magic tricks"
+title: "Ruby magic"
 date: 2014-06-15 17:53:07 -0400
 comments: true
 categories: [Flatiron School, Ruby, methods_magic]

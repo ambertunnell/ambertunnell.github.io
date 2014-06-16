@@ -8,6 +8,9 @@ categories: [Flatiron School, Ruby]
 
 After being at <i>The Flatiron School</i> for two weeks, I've come to realize that it's all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here's an on-going list of awesome resources for the beginning Rubyist that I've learned about so far. If you know of other great resources not yet included, mention them in the comments!
 
+<h3><a href="http://ruby-doc.org/">Ruby Documentation</a></h3>
+<p>Use the documentation! It's the best resource you have. If you want to know what a method does, it will almost always say it in the documentation. If not, the method probably doesn't exist. (But sometimes it does.) Despite that: Use. The. Documentation.</p>
+
 <h3><a href= "http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html" target="_blank">IRB</a></h3> 
 <p>For weeks before Flatiron, I was beginning to learn Ruby. And when I wanted to know what a Ruby method did, I would often open up another ruby doc in a text editor and then puts the result to the terminal. Then, on the first day of class, I learned about IRB! IRB stands for "interactive ruby," and is a tool that interactively executes Ruby code in the terminal. Just key in "irb" and Ruby away! Now, every time I'm unsure of a piece of code, I simply check it in irb! Such a time-saver!</p>
 
