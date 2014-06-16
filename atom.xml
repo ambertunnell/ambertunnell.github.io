@@ -4,7 +4,7 @@
   <title><![CDATA[amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-06-16T10:10:06-04:00</updated>
+  <updated>2014-06-16T10:37:37-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -203,6 +203,14 @@
     <id>http://ambertunnell.github.io/blog/2014/06/03/awesome-ruby-resources</id>
     
     <content type="html"><![CDATA[<p>After being at <i>The Flatiron School</i> for two weeks, I&rsquo;ve come to realize that it&rsquo;s all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here&rsquo;s an on-going list of awesome resources for the beginning Rubyist that I&rsquo;ve learned about so far. If you know of other great resources not yet included, mention them in the comments!</p>
+
+<h3><a href="http://ruby-doc.org/">Ruby Documentation</a></h3>
+
+
+<p>Use the documentation! It&#8217;s the best resource you have. If you want to know what a method does, it will almost always say it in the documentation. If not, the method probably doesn&#8217;t exist. (But sometimes it does.) Despite that: Use. The. Documentation.</p>
+
+
+
 
 <h3><a href= "http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html" target="_blank">IRB</a></h3>
 
