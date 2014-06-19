@@ -105,7 +105,9 @@
 
 <h2><code>.collect.with_index</code></h2>
 
-<p>This one may seem obvious to most, but it was a happy discovery for me last week when I was trying to solve a problem. I had been familiar with the method <code>.each.with_index</code> for a while, and every time I needed to use indexes while iterating, I used it. But, as most Rubyists do, I vastly prefer <code>.collect</code> over <code>.each</code> in most cases, and was frustrated that I couldn&rsquo;t use indexes with collect. I&rsquo;m not sure why I thought it could only work with .each, but I did for a while. But then I tried it, and it worked! .<code>collect.with_index</code> is a real thing! So, the method <code>.with_index</code> can work on either <code>.each</code> or <code>.collect</code>.</p>
+<p>This one may seem obvious to most, but it was a happy discovery for me last week when I was trying to solve a problem. I had been familiar with the method <code>.each.with_index</code> for a while, and every time I needed to use indexes while iterating, I used it. However, I prefer <code>.collect</code> over <code>.each</code> in most cases, and was frustrated that I couldn&rsquo;t use indexes with collect. I&rsquo;m not sure why I thought it could only work with <code>.each</code>, but I did for a while. But then I tried it with <code>.collect</code>, and it worked! .<code>collect.with_index</code> is a real thing! So, the method <code>.with_index</code> can work on either <code>.each</code> or <code>.collect</code>.</p>
+
+<p>In general, <code>.collect</code> is preferable to <code>.each</code> in any iteration where you are trying to collect data from a block into a new array. The code written with <code>.collect</code> will be cleaner and more concise, as shown in the example below.</p>
 
 <figure class='code'><figcaption><span>each.with_index </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -135,7 +137,7 @@
 
 <h2><code>.freeze</code></h2>
 
-<p>Freeze! Because this is Ruby, the method <code>.freeze</code> does exactly what you think it does. It freezes the object from being altered in any way. And you can even check if an object is frozen by asking it if it&rsquo;s frozen!</p>
+<p>Freeze! Because this is Ruby, the method <code>.freeze</code> does exactly what you think it does. It freezes the object from being altered in any way. And you can even check if an object is frozen by asking it if it&rsquo;s frozen! This may be useful if you have a class that you want to alter in your program until a certain condition is met, then if you want the object to be immutable you can just <code>.freeze</code> it from that point on.</p>
 
 <figure class='code'><figcaption><span>.freeze </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
