@@ -9,7 +9,7 @@
   <meta name="author" content="Amber Tunnell">
 
   
-  <meta name="description" content="Instance variables in Ruby can be written in two ways. With an @ symbol, @variable, or with an explicit reference to that particular instance, self. &hellip;">
+  <meta name="description" content="Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, @variable, or through a method call, self.variable. Many Rubyists &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,9 +96,13 @@
   </header>
 
 
-<div class="entry-content"><p>Instance variables in Ruby can be written in two ways. With an @ symbol, <code>@variable</code>, or with an explicit reference to that particular instance, <code>self.variable</code>. Many Rubyists think these are synonymous. However, they are not. In this post, I will explain why.</p>
+<div class="entry-content"><p>Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, <code>@variable</code>, or through a method call, <code>self.variable</code>. Many Rubyists think these are synonymous. However, they are not.</p>
 
-<p>Let&rsquo;s set up a basic class to get us started.</p>
+<p>By accessing the data through the method call, you are protecting the data from being accessed directly. Therefore, if the data changes unexpectedly, you will only have to adjust the one method. If you access the data directly throughout your code, you may have to change it many times so that your code doesn&rsquo;t break.</p>
+
+<p>It is a fine distinction, but can become an incredibly important one the larger your program is.</p>
+
+<p>Here&rsquo;s an example. Let&rsquo;s set up a basic class to get us started.</p>
 
 <figure class='code'><figcaption><span>Cat class</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -163,9 +167,9 @@
 
 
 <p>
-Now, we have a method that accesses the @age instance variable that is initialized upon instantiation. By using &lsquo;@&rsquo; instead of &lsquo;self.&rsquo;, we are directly accessing that variable.</p>
+Now, we have a method that accesses the @age instance variable that is initialized upon instantiation. By using &lsquo;@&rsquo; instead of &lsquo;self&rsquo;, we are directly accessing that variable.</p>
 
-<p>But, say, what if we wanted a variable that actually equals age + 2? We could add in that variable and use it throughout. Like so:</p>
+<p>But, what if we wanted a variable that actually equals age + 2? We could add in that variable and use it throughout. Like so:</p>
 
 <figure class='code'><figcaption><span>Cat class</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -209,11 +213,11 @@ Now, we have a method that accesses the @age instance variable that is initializ
 
 
 <p>
-One could argue that we could&rsquo;ve just initialized @age to be equal to age+2, but I think that would go against Ruby convention and confuse matters. Plus, we could never then access both <code>age</code> and <code>age+2</code>. <code>@age</code> would be stuck at age + 2.</p>
+One could argue that we could&rsquo;ve just initialized @age to be equal to age+2, but I think that would go against Ruby convention and confuse matters. Plus, we could then never access both <code>age</code> and <code>age+2</code>. <code>@age</code> would be stuck at age + 2.</p>
 
 <p>Okay, we made those changes. That wasn&rsquo;t too hard. However, what if we referenced this variable in a thousand different places? It just wouldn&rsquo;t be feasible or desirable to have to comb through the code and change them all.</p>
 
-<p>Here&rsquo;s where <code>self.</code> comes in. Let&rsquo;s go back one step and reimplement the example with <code>self.</code>.</p>
+<p>Here&rsquo;s where <code>self</code> comes in. Let&rsquo;s go back one step and reimplement the example with <code>self</code>.</p>
 
 <figure class='code'><figcaption><span>Cat class</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -250,7 +254,7 @@ One could argue that we could&rsquo;ve just initialized @age to be equal to age+
 </span><span class='line'>    <span class="k">elsif</span> <span class="nb">self</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">1</span>
 </span><span class='line'>      <span class="vi">@human_age</span> <span class="o">=</span> <span class="mi">15</span>
 </span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>      <span class="n">human_age</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">+</span> <span class="nb">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">4</span>
+</span><span class='line'>      <span class="vi">@human_age</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">+</span> <span class="nb">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">4</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
@@ -312,7 +316,7 @@ One could argue that we could&rsquo;ve just initialized @age to be equal to age+
 </span><span class='line'>    <span class="k">elsif</span> <span class="nb">self</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">1</span>
 </span><span class='line'>      <span class="vi">@human_age</span> <span class="o">=</span> <span class="mi">15</span>
 </span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>      <span class="n">human_age</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">+</span> <span class="nb">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">4</span>
+</span><span class='line'>      <span class="vi">@human_age</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">+</span> <span class="nb">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">4</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
