@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron School | amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-06-18T22:14:56-04:00</updated>
+  <updated>2014-06-29T23:19:20-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -12,6 +12,180 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Analyzing instance variables in Ruby]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/06/29/analyzing-instance-variables-in-ruby/"/>
+    <updated>2014-06-29T21:26:29-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/06/29/analyzing-instance-variables-in-ruby</id>
+    <content type="html"><![CDATA[<p>Instance variables in Ruby can be written in two ways. With an @ symbol, <code>@variable</code>, or with an explicit reference to that particular instance, <code>self.variable</code>. Many Rubyists think these are synonymous. However, they are not. In this post, I will explain why.</p>
+
+<p>Let&rsquo;s set up a basic class to get us started.</p>
+
+<p>```ruby Cat class
+class Cat</p>
+
+<p>  def initialize(name, age)</p>
+
+<pre><code>@name = name
+@age = age
+</code></pre>
+
+<p>  end</p>
+
+<p>end<br/>
+```
+This Cat class can be initialized with two variables: @name and @age.</p>
+
+<p>Now, let&rsquo;s make our class more interesting.</p>
+
+<p>```ruby Cat class
+class Cat</p>
+
+<p>  def initialize(name, age)</p>
+
+<pre><code>@name = name
+@age = age
+</code></pre>
+
+<p>  end</p>
+
+<p>  def age_in_human_years</p>
+
+<pre><code>if @age == 0
+  @human_age = 0
+elsif @age == 1
+  @human_age = 15  
+else 
+  @human_age = 16 + @age * 4
+end  
+</code></pre>
+
+<p>  end</p>
+
+<p>end<br/>
+```
+Now, we have a method that accesses the @age instance variable that is initialized upon instantiation. By using &lsquo;@&rsquo; instead of &lsquo;self.&rsquo;, we are directly accessing that variable.</p>
+
+<p>But, say, what if we wanted a variable that actually equals age + 2? We could add in that variable and use it throughout. Like so:</p>
+
+<p>```ruby Cat class
+class Cat</p>
+
+<p>  def initialize(name, age)</p>
+
+<pre><code>@name = name
+@age = age
+@new_age = age + 2 #=&gt; addition
+</code></pre>
+
+<p>  end</p>
+
+<p>  def age_in_human_years</p>
+
+<pre><code>if @new_age == 0 #=&gt; change 1
+  @human_age = 0
+elsif @new_age == 1 #=&gt; change 2
+  @human_age = 15  
+else 
+  @human_age = 16 + @new_age * 4 #=&gt; change 3 
+end  
+</code></pre>
+
+<p>  end</p>
+
+<p>end<br/>
+<code>``
+One could argue that we could've just initialized @age to be equal to age+2, but I think that would go against Ruby convention and confuse matters. Plus, we could never then access both</code>age<code>and</code>age+2<code>.</code>@age` would be stuck at age + 2.</p>
+
+<p>Okay, we made those changes. That wasn&rsquo;t too hard. However, what if we referenced this variable in a thousand different places? It just wouldn&rsquo;t be feasible or desirable to have to comb through the code and change them all.</p>
+
+<p>Here&rsquo;s where <code>self.</code> comes in. Let&rsquo;s go back one step and reimplement the example with <code>self.</code>.</p>
+
+<p>```ruby Cat class
+class Cat</p>
+
+<p>  attr_reader :age</p>
+
+<p>  def initialize(name, age)</p>
+
+<pre><code>@name = name
+@age = age
+</code></pre>
+
+<p>  end</p>
+
+<p>  def age_in_human_years</p>
+
+<pre><code>if self.age == 0
+  @human_age = 0
+elsif self.age == 1
+  @human_age = 15  
+else 
+  human_age = 16 + self.age * 4
+end  
+</code></pre>
+
+<p>  end</p>
+
+<p>end<br/>
+```</p>
+
+<p>So, we changed the <code>@age</code> to <code>self.age</code> throughout. And, added in a <code>attr_reader</code>,  which is shorthand for this method:</p>
+
+<p>```ruby attr_reader
+  def age</p>
+
+<pre><code>@age
+</code></pre>
+
+<p>  end
+```</p>
+
+<p>It merely creates a method that can access the instance variable. So, to clarify, when we reference @age we are accessing the variable data directly. But, when we use self.age (note: the &lsquo;self&rsquo; is actually optional), we are accessing the variable indirectly through this reader method.</p>
+
+<p>So, again, say we want to make that age adjustment and add 2 to the given age.  Instead of adjusting the code accordingly, we can just create our own reader method for that variable.</p>
+
+<p>```ruby Cat class
+class Cat</p>
+
+<p>  def age</p>
+
+<pre><code>@age + 2
+</code></pre>
+
+<p>  end</p>
+
+<p>  def initialize(name, age)</p>
+
+<pre><code>@name = name
+@age = age 
+</code></pre>
+
+<p>  end</p>
+
+<p>  def age_in_human_years</p>
+
+<pre><code>if self.age == 0
+  @human_age = 0
+elsif self.age == 1
+  @human_age = 15  
+else 
+  human_age = 16 + self.age * 4
+end  
+</code></pre>
+
+<p>  end</p>
+
+<p>end<br/>
+<code>``
+The only thing we did this time for that change is delete the default</code>attr_reader<code>method and define a short method that changes the information received when one calls</code>.age<code>. Also, this way, we can preserve access to the original given age, by calling</code>@age<code>, and we can access @age+2, by calling</code>.age`.</p>
+
+<p>The difference may seem insignificant. And, in small programs, it probably is. But, as programs grow larger, this may make a significant difference in how costly one change may be.If you are only directly accessing the data of an instance variable in one place, you only have to change it in one place. But, if you are directly accessing it hundreds of times, you may have to look at all of those pieces to verify that they won&rsquo;t break now that the value of a variable has changed.</p>
+
+<p>So, the take-away: always hide data from yourself. It is the best defensive strategy to protect your code from unexpected changes.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby magic]]></title>
