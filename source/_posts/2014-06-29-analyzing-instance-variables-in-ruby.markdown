@@ -5,9 +5,13 @@ date: 2014-06-29 21:26:29 -0400
 comments: true
 categories: [Ruby, instance variables, self, Flatiron School] 
 ---
-Instance variables in Ruby can be written in two ways. With an @ symbol, `@variable`, or with an explicit reference to that particular instance, `self.variable`. Many Rubyists think these are synonymous. However, they are not. In this post, I will explain why.
+Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, `@variable`, or through a method call, `self.variable`. Many Rubyists think these are synonymous. However, they are not. 
 
-Let's set up a basic class to get us started.
+By accessing the data through the method call, you are protecting the data from being accessed directly. Therefore, if the data changes unexpectedly, you will only have to adjust the one method. If you access the data directly throughout your code, you may have to change it many times so that your code doesn't break.
+
+It is a fine distinction, but can become an incredibly important one the larger your program is.
+
+Here's an example. Let's set up a basic class to get us started.
 
 ```ruby Cat class
 class Cat
@@ -43,9 +47,9 @@ class Cat
 
 end  
 ``` 
-Now, we have a method that accesses the @age instance variable that is initialized upon instantiation. By using '@' instead of 'self.', we are directly accessing that variable.
+Now, we have a method that accesses the @age instance variable that is initialized upon instantiation. By using '@' instead of 'self', we are directly accessing that variable.
 
-But, say, what if we wanted a variable that actually equals age + 2? We could add in that variable and use it throughout. Like so:
+But, what if we wanted a variable that actually equals age + 2? We could add in that variable and use it throughout. Like so:
 
 ```ruby Cat class
 class Cat
@@ -68,11 +72,11 @@ class Cat
 
 end  
 ``` 
-One could argue that we could've just initialized @age to be equal to age+2, but I think that would go against Ruby convention and confuse matters. Plus, we could never then access both `age` and `age+2`. `@age` would be stuck at age + 2.
+One could argue that we could've just initialized @age to be equal to age+2, but I think that would go against Ruby convention and confuse matters. Plus, we could then never access both `age` and `age+2`. `@age` would be stuck at age + 2.
 
 Okay, we made those changes. That wasn't too hard. However, what if we referenced this variable in a thousand different places? It just wouldn't be feasible or desirable to have to comb through the code and change them all.
 
-Here's where `self.` comes in. Let's go back one step and reimplement the example with `self.`.
+Here's where `self` comes in. Let's go back one step and reimplement the example with `self`.
 
 ```ruby Cat class
 class Cat
@@ -90,7 +94,7 @@ class Cat
     elsif self.age == 1
       @human_age = 15  
     else 
-      human_age = 16 + self.age * 4
+      @human_age = 16 + self.age * 4
     end  
   end 
 
@@ -127,7 +131,7 @@ class Cat
     elsif self.age == 1
       @human_age = 15  
     else 
-      human_age = 16 + self.age * 4
+      @human_age = 16 + self.age * 4
     end  
   end 
 
