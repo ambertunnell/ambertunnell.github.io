@@ -11,6 +11,8 @@ By accessing the data through the method call, you are protecting the data from 
 
 It is a fine distinction, but can become an incredibly important one the larger your program is.
 
+<!-- more -->
+
 Here's an example. Let's set up a basic class to get us started.
 
 ```ruby Cat class

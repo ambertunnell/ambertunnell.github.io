@@ -6,7 +6,7 @@ comments: true
 categories: [Flatiron School, Ruby] 
 ---
 
-After being at <i>The Flatiron School</i> for two weeks, I've come to realize that it's all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here's an on-going list of awesome resources for the beginning Rubyist that I've learned about so far. If you know of other great resources not yet included, mention them in the comments!
+After being at <i>The Flatiron School</i> for two weeks, I've come to realize that it's all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here's an on-going list of awesome resources for the beginning Rubyist that I've learned about so far. If you know of other great resources not yet included, mention them in the comments! <!-- more -->
 
 <h3><a href="http://ruby-doc.org/">Ruby Documentation</a></h3>
 <p>Use the documentation! It's the best resource you have. If you want to know what a method does, it will almost always say it in the documentation. If not, the method probably doesn't exist. (But sometimes it does.) Despite that: Use. The. Documentation.</p>

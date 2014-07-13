@@ -6,7 +6,7 @@ comments: true
 categories: [Flatiron School, Ruby, methods_magic]
 ---
 
-I've been learning Ruby for about 2-3 months now, and I've already fallen in love. Hard. The language is so intuitive that often I find myself trying methods in Ruby that I've never learned about just because I think there is a good chance they'll work. And, often if they don't do exactly what I thought they did, they still do something interesting that is awesome.
+I've been learning Ruby for about 2-3 months now, and I've already fallen in love. Hard. The language is so intuitive that often I find myself trying methods in Ruby that I've never learned about just because I think there is a good chance they'll work. And, often if they don't do exactly what I thought they did, they still do something interesting that is awesome. <!-- more -->
 
 In this post, I plan to discuss hidden Ruby tricks that many beginning Rubyists might not know about (yet!) that I've discovered online or through playing around with Ruby. This is by no means a comprehensive list, but I hope it illustrates a few of Ruby's awesome tricks. They are all included in the <a href="http://ruby-doc.org/">Ruby Documentation</a> if you want to learn more. Also, shout out in the comments if you know of any other good ones to add to the list!
 
