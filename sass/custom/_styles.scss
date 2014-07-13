@@ -20,7 +20,7 @@ body {
 	}
 
 	a:hover {
-		color: #3a8acc !important;
+		color: #398eb5 !important;
 		background: #FFFFFF;
 	}
 
@@ -33,9 +33,8 @@ body {
 		text-align: center;
 		
 		.header-title {
-			font-size: 2em;
-			font-weight: 170;
-			text-transform: lowercase;
+			font-size: 1.75em;
+			font-weight: 150;
 			letter-spacing: 6px;
 			color: #222;
 			a {
@@ -44,15 +43,15 @@ body {
 			}
 			
 			a:hover {
-				color: #3a8acc;
+				color: #398eb5;
 			};
 		}
 		
 		.header-subtitle {
+			font-family: 'Handlee', cursive;
 			font-size: 1em;
-			text-transform: uppercase;
-			letter-spacing: 4px;
-			color: #3a8acc;
+			letter-spacing: 3px;
+			color: #398eb5;
 		}
 		
 		h1 {
@@ -70,15 +69,26 @@ body {
 		border-top: 1px solid #b0b0b0;
 		padding-left: 0px;
 		padding-right: 0px;
+		padding-bottom: 10px;
+		padding-top: 10px;
 
 		a {
 				font-family: 'Helvetica Neue', sans-serif;
            		text-decoration: none;
+           		border-bottom: solid 3px #FFFFFF; 
+           		margin: auto;
+           		font-weight: 200;
 				text-shadow: none;
            		font-size: 22px;
            		padding-left: 10px;
            		padding-right: 10px;
         	}
+    a:hover {
+    		color: #6b6b6b !important;
+    		border-bottom: solid 3px #398eb5;
+					}
+   	
+
 		form .search {
 			font-family: 'Helvetica Neue', sans-serif;
 			font-weight: 100;
@@ -196,7 +206,7 @@ article {
 			a {
 				font-family: 'Helvetica Neue', sans-serif;
 				font-weight: bold;
-				font-size: 36px;
+				font-size: 30px;
 				line-height: 1.2em;
 			}
 
@@ -279,6 +289,9 @@ h1.entry-title {
 				font-family: 'Helvetica Neue', sans-serif;
 				font-weight: 100;
 				text-decoration: none;
+			}
+			a:hover {
+				color: #398eb5 !important;
 			}
 		}
 

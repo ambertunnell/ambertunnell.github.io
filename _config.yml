@@ -3,10 +3,10 @@
 # ----------------------- #
 
 url: http://ambertunnell.github.io
-title: amber tunnell 
-subtitle: a caffeinated coder  
+title: amber_tunnell = Rubyist.new
+subtitle: puts 'my thoughts on the magic that is code'
 author: Amber Tunnell
-simple_search: www.google.com
+simple_search: http://google.com/search
 description: A Flatiron Student's blog on life, love, and code.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -16,7 +16,7 @@ description: A Flatiron Student's blog on life, love, and code.
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: 
+subscribe_rss: /atom.xml 
 subscribe_email: 
 # RSS feeds can list your email address if you like
 email: amber.tunnell@gmail.com
@@ -46,7 +46,7 @@ pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 
-titlecase: true       # Converts page and post titles to titlecase
+titlecase: false     # Converts page and post titles to titlecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
@@ -75,6 +75,10 @@ twitter_tweet_button: true
 # LinkedIn
 linkedin_user: ambertunnell  
 linkedin_button: true
+
+#Stack Overflow
+stackoverflow_user: amber-tunnell
+stackoverflow_user: true
 
 # Google +1
 google_plus_one: false
