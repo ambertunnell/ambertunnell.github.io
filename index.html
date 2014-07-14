@@ -9,7 +9,7 @@
   <meta name="author" content="Amber Tunnell">
 
   
-  <meta name="description" content="Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, @variable, or through a method call, self.variable. Many Rubyists &hellip;">
+  <meta name="description" content="With Rails 4, there has been a change to the has_and_belongs_to_many ActiveRecord relationship. In the past, there have been two ways to declare a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +68,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/14/has-and-belongs-to-many/">has_and_belongs_to_many</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-14T09:35:55-04:00" pubdate data-updated="true">Jul 14<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/07/14/has-and-belongs-to-many/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With Rails 4, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
+
+<p>In the past, there have been two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model. While with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
+
+<p>Now, with Rails 4, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code>. This change forces developers to now always state the join model, just as you normally would with <code>has_many, through:</code>.</p>
+
+<p>This change ultimately clears confusion and always for more versatility in development.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/14/has-and-belongs-to-many/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -219,6 +270,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/14/has-and-belongs-to-many/">has_and_belongs_to_many</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Analyzing instance variables in Ruby</a>
