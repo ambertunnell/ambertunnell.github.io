@@ -272,8 +272,9 @@ aside {
 }
 
 h1.entry-title {
-	font-family: 'Helvetica Neue', sans-serif;
+	font-family: 'Handlee', cursive !important;
 	font-weight: 100;
+	color: #398eb5;
 }
 
 #blog-archives {
@@ -346,19 +347,49 @@ h1.entry-title {
      }
 }
 
-.about-social-media {
+
+.about-me h2 {
+	font-family: Handlee;
+	color: #398eb5; 
+}
+
+.about-me {
+	text-align: center;
+}
+
+.social_media {
   margin: 10px 5px 25px;
   width: 60px;
   height: 60px;
   display: inline;
-
+  
 }
 
-a.linkedin { background: url(../../source/images/social_icons/bw-linkedin.png) no-repeat; }
-a.linkedin:hover { background: url(../../source/images/social_icons/linkedin.png), no-repeat; }
+.social-media-section h2 {
+	font-family: Handlee;
+	color: #398eb5;
+}
 
-a.twitter { background: url(../../source/images/social_icons/bw-twitter.png) no-repeat; }
-a.twitter:hover { background: url(../../source/images/social_icons/twitter.png), no-repeat; }
+.social-media-section  {
+	margin: auto;
+	text-align: center;
+}
 
-a.github { background: url(../../source/images/social_icons/bw-github.png) no-repeat; }
-a.github:hover { background: url(../../source/images/social_icons/github.png), no-repeat; }
+.email {
+	display: inline;
+}
+
+#footer-widgets {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #FFFFFF;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  border-top-color: #F1F1F1;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding: 20px;
+}

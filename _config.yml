@@ -81,13 +81,13 @@ stackoverflow_user: amber-tunnell
 stackoverflow_user: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: TRUE
 google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user: +AmberTunnell
-googleplus_hidden: false
+googleplus_user: 
+googleplus_hidden: 
 
 # Pinboard
 pinboard_user:

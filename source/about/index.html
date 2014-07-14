@@ -1,0 +1,38 @@
+---
+layout: default
+
+---
+
+<div class="about-me">
+<h2>a little about me</h2>
+After graduating from Columbia University with degrees in philosophy and English literature, I worked in publishing for a few years. Now, I'm learning web development at the Flatiron School in NYC.
+</div>
+
+<div class="social-media-section">
+<h2>let's connect</h2>
+{% if site.github_user %}
+<a href="https://github.com/{{site.github_user}}/" class="social_media" class="github" rel="tooltip" title="Github" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-github.png" 
+onmouseover="this.src='{{ root_url }}/images/social_icons/github.png'"
+onmouseout="this.src='{{ root_url }}/images/social_icons/bw-github.png'" /></A>
+{% endif %}
+
+
+{% if site.linkedin_user %}
+<a href="https://linkedin.com/{{site.linkedin_user}}/" class="social_media" class="linkedin" rel="tooltip" title="Linkedin" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-linkedin.png" 
+onmouseover="this.src='{{ root_url }}/images/social_icons/linkedin.png'"
+onmouseout="this.src='{{ root_url }}/images/social_icons/bw-linkedin.png'" /></A>
+{% endif %}
+
+{% if site.twitter_user %}
+<a href="https://twitter.com/{{site.twitter_user}}/" class="social_media" class="twitter" rel="tooltip" title="Twitter" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-twitter.png" 
+onmouseover="this.src='{{ root_url }}/images/social_icons/twitter.png'"
+onmouseout="this.src='{{ root_url }}/images/social_icons/bw-twitter.png'" /></A>
+{% endif %}
+
+<br><br>
+
+{% if site.email %}
+<h2>or email me</h2>
+<a href="mailto:{{ site.email }}" class="email">{{ site.email }}</a>
+{% endif %}
+</div>
