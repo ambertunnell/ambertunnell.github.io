@@ -16,7 +16,7 @@ description: A Flatiron Student's blog on life, love, and code.
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: http://feeds.feedburner.com/ambertunnell 
+subscribe_rss: http://feeds.feedburner.com/ambertunnell
 subscribe_email: 
 # RSS feeds can list your email address if you like
 email: amber.tunnell@gmail.com

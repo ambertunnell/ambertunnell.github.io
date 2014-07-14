@@ -16,6 +16,11 @@ onmouseover="this.src='{{ root_url }}/images/social_icons/github.png'"
 onmouseout="this.src='{{ root_url }}/images/social_icons/bw-github.png'" /></A>
 {% endif %}
 
+{% if site.stackoverflow_user %}
+<a href="http://stackoverflow.com/users/3826943/amber-tunnell" class="social_media" class="stackoverflow" rel="tooltip" title="Stack Overflow" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-stackoverflow.png" 
+onmouseover="this.src='{{ root_url }}/images/social_icons/stackoverflow.png'"
+onmouseout="this.src='{{ root_url }}/images/social_icons/bw-stackoverflow.png'" /></A>
+{% endif %}
 
 {% if site.linkedin_user %}
 <a href="https://linkedin.com/{{site.linkedin_user}}/" class="social_media" class="linkedin" rel="tooltip" title="Linkedin" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-linkedin.png" 
