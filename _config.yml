@@ -16,7 +16,7 @@ description: A Flatiron Student's blog on life, love, and code.
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml 
+subscribe_rss: http://feeds.feedburner.com/ambertunnell 
 subscribe_email: 
 # RSS feeds can list your email address if you like
 email: amber.tunnell@gmail.com
@@ -81,7 +81,7 @@ stackoverflow_user: amber-tunnell
 stackoverflow_user: true
 
 # Google +1
-google_plus_one: TRUE
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -91,11 +91,11 @@ googleplus_hidden:
 
 # Pinboard
 pinboard_user:
-pinboard_count: 3
+pinboard_count: 
 
 # Delicious
 delicious_user:
-delicious_count: 3
+delicious_count: 
 
 # Disqus Comments
 disqus_short_name: ambertunnelloctoblog
