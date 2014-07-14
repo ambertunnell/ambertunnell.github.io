@@ -69,8 +69,8 @@ body {
 		border-top: 1px solid #b0b0b0;
 		padding-left: 0px;
 		padding-right: 0px;
-		padding-bottom: 10px;
-		padding-top: 10px;
+		padding-bottom: 0px;
+		padding-top: 0px;
 
 		a {
 				font-family: 'Helvetica Neue', sans-serif;
@@ -92,13 +92,13 @@ body {
 		form .search {
 			font-family: 'Helvetica Neue', sans-serif;
 			font-weight: 100;
-			border-radius: 0.2em 0.2em 0.2em 0.2em;
+			border-radius: 0.4em 0.4em 0.4em 0.4em;
 			box-shadow: none;
 			border: 0px;
-			padding-top: 0.3em;
-			padding-bottom: 0.3em;
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-top: 0.4em;
+			padding-bottom: 0.4em;
+			padding-left: 0.4em;
+			padding-right: 0.4em;
 			background: #f8f8f8;
 		}
 
