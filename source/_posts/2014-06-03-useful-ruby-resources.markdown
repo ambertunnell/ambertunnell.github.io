@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Awesome Ruby Resources"
+title: "Useful Ruby resources"
 date: 2014-06-03 22:17:00 -0400
 comments: true
 categories: [Flatiron School, Ruby] 
