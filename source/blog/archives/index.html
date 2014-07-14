@@ -13,6 +13,9 @@ footer: false
 {% endunless %}
 <article>
   {% include archive_post.html %}
+  <div class="tags">
+    {% include post/categories.html %}
+  </div>
 </article>
 {% endfor %}
 </div>
