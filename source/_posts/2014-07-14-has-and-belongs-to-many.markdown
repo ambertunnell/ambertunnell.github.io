@@ -4,8 +4,8 @@ title: has_and_belongs_to_many
 subtitle: change in Rails 4 ActiveRecord associations
 date: 2014-07-14 09:35:55 -0400
 comments: true
-categories: [Ruby, Ruby on Rails, Rails changes, ActiveRecord, Flatiron School] 
-published: false
+categories: [Ruby, Ruby on Rails, Rails changes, ActiveRecord] 
+published: true
 ---
 
 With Rails 4, there has been a change to the `has_and_belongs_to_many` ActiveRecord relationship. 

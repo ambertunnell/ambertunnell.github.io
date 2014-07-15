@@ -1,12 +1,17 @@
 ---
 layout: default
-
+title: about
+footer: false
 ---
+<article role="article">
+  <header>
+    <h1 class="entry-title">about</h1>
+  </header>   
 <div class="about-page">
   <div class="about-me">
     <h2>a little about me</h2>
-    After graduating from Columbia University with degrees in philosophy and English literature, I worked in publishing for a few years. Now, I'm learning web development at the Flatiron School in NYC.
-  </div>
+    {% include asides/about.html %}
+  </div> 
 
   <div class="social-media-section">
     <h2>let's connect</h2>
@@ -33,12 +38,19 @@ layout: default
     onmouseover="this.src='{{ root_url }}/images/social_icons/twitter.png'"
     onmouseout="this.src='{{ root_url }}/images/social_icons/bw-twitter.png'" /></A>
     {% endif %}
-
-    <br><br>
-
+</div>
+ <div class="email">
     {% if site.email %}
     <h2>or email me</h2>
-    <a href="mailto:{{ site.email }}" class="email">{{ site.email }}</a>
+    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
     {% endif %}
   </div>
+
+  <div class="github_repos">
+    {% include asides/github.html %}
+  </div>
+
 </div>
+</article>
+
+   

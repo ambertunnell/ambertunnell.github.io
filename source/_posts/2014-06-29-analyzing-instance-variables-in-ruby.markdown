@@ -3,7 +3,7 @@ layout: post
 title: "Analyzing instance variables in Ruby"
 date: 2014-06-29 21:26:29 -0400
 comments: true
-categories: [Ruby, instance variables, self, Flatiron School] 
+categories: [Ruby, instance variables, self] 
 ---
 Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, `@variable`, or through a method call, `self.variable`. Many Rubyists think these are synonymous. However, they are not. 
 
