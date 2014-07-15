@@ -9,7 +9,7 @@
   <meta name="author" content="Amber Tunnell">
 
   
-  <meta name="description" content="With Rails 4, there has been a change to the has_and_belongs_to_many ActiveRecord relationship. In the past, there have been two ways to declare a &hellip;">
+  <meta name="description" content="With Rails 4, there has been a change to the has_and_belongs_to_many ActiveRecord relationship. In the past, there were two ways to declare a many-to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,11 +101,11 @@
 
   <div class="entry-content"><p>With Rails 4, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
 
-<p>In the past, there have been two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model. While with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
+<p>In the past, there were two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model. While with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
 
-<p>Now, with Rails 4, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code>. This change forces developers to now always state the join model, just as you normally would with <code>has_many, through:</code>.</p>
+<p>Now, with Rails 4, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code>. This change forces developers to now always include the join model, just as you normally would with <code>has_many, through:</code>.</p>
 
-<p>This change ultimately clears confusion and always for more versatility in development.</p>
+<p>This change ultimately clears confusion and allows for more versatility in development.</p>
 
 </div>
   
