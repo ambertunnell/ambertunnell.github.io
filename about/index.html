@@ -69,8 +69,10 @@
       <div class="about-page">
   <div class="about-me">
     <h2>a little about me</h2>
-    After graduating from Columbia University with degrees in philosophy and English literature, I worked in publishing for a few years. Now, I&#8217;m learning web development at the Flatiron School in NYC.
-  </div>
+    <section>
+  After graduating from Columbia University with degrees in philosophy and English literature, I worked in publishing for a few years. Now, I&#8217;m learning web development at the Flatiron School in NYC.
+</section>
+  </div> 
 
   <div class="social-media-section">
     <h2>let&#8217;s connect</h2>
@@ -105,7 +107,45 @@
     <a href="mailto:amber.tunnell@gmail.com" class="email">amber.tunnell@gmail.com</a>
     
   </div>
+
+    <div class="github_repos">
+    
+<section>
+  <h2>GitHub Repos</h2>
+  <ul style="list-style-type: none;"  id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/ambertunnell">@ambertunnell</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ambertunnell',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  </div>
+
 </div>
+
+   
+
     </div>
   </div>
   <footer role="contentinfo"><p>
