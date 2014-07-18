@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: erb | amber_tunnell = Rubyist.new]]></title>
+  <link href="http://ambertunnell.github.io/blog/categories/erb/atom.xml" rel="self"/>
+  <link href="http://ambertunnell.github.io/"/>
+  <updated>2014-07-18T02:53:42-04:00</updated>
+  <id>http://ambertunnell.github.io/</id>
+  <author>
+    <name><![CDATA[Amber Tunnell]]></name>
+    <email><![CDATA[amber.tunnell@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Writing beautiful code with haml]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/"/>
+    <updated>2014-07-18T00:25:50-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml</id>
+    <content type="html"><![CDATA[<p>The more I code, the more I think of coding as an art form. Good code is easy to read by other humans, efficient, and easily adaptable. But great code is also elegant. When you look at a great piece of code, it feels <em>right</em>. Similarly, poorly written code, while often functional, just feels wrong and frustrating to look at.</p>
+
+<p>Writing view templates using <a href="http://en.wikipedia.org/wiki/ERuby">ERB</a>, the default Rails templating language, has always seemed unnecessarily messy to me. ERB tags do not flow well with Ruby code or HTML tags. They are time-consuming to write in code. You also cannot use the <code>command-slash</code> commenting shortcut in Sublime Text with them; you must comment out each line of Ruby code separately (which makes them even more time-consuming to maintain).</p>
+
+<p>Therefore, I was delighted when I discovered <a href="http://haml.info/">HAML (HTML abstraction markup language)</a>. A markup language that was designed to replace messy ERB templates with simpler, cleaner design. Why? Because markup should be beautiful.</p>
+
+<p>While this idea may seem crazy to certain people, just take a look at the following basic forms, one written in basic HTML and one in HAML.</p>
+
+<p>```html basic form_for with erb
+&lt;%= form_for(@post) do |f| %></p>
+
+<p>  <div class="field"></p>
+
+<pre><code>&lt;%= f.label :name %&gt;
+&lt;%= f.text_field :name %&gt;
+&lt;%= f.label :content %&gt;
+&lt;%= f.text_area :content %&gt;
+</code></pre>
+
+<p>  </div></p>
+
+<p>  <div class="field"></p>
+
+<pre><code>&lt;%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %&gt;
+</code></pre>
+
+<p>  </div></p>
+
+<p>  <div class="field"></p>
+
+<pre><code>&lt;%= f.fields_for :tags, Tag.new do |tag_form| %&gt; 
+  &lt;%= tag_form.label :name, "Name" %&gt;
+  &lt;%= tag_form.text_field :name  %&gt;
+&lt;% end %&gt; 
+</code></pre>
+
+<p>  </div></p>
+
+<p>  <div class="actions"></p>
+
+<pre><code>&lt;%= f.submit %&gt;
+</code></pre>
+
+<p>  </div></p>
+
+<p>&lt;% end %>
+```</p>
+
+<p>Here is the same exact form using HAML instead of ERB:</p>
+
+<p>```ruby basic form_for with haml
+= form_for(@post) do |f|
+  .field</p>
+
+<pre><code>= f.label :name
+= f.text_field :name
+= f.label :content
+= f.text_area :content
+</code></pre>
+
+<p>  .field</p>
+
+<pre><code>= f.collection_check_boxes :tag_ids, Tag.all, :id, :name
+</code></pre>
+
+<p>  .field</p>
+
+<pre><code>= f.fields_for :tags, Tag.new do |tag_form|
+  = tag_form.label :name, "Name"
+  = tag_form.text_field :name
+</code></pre>
+
+<p>  .actions</p>
+
+<pre><code>= f.submit
+</code></pre>
+
+<p>```</p>
+
+<p>That&rsquo;s 44 percent fewer lines of code, with a cleaner and more elegant design that also took less time to write. You can also comment out the entire section with one command, if desired. (No more commenting out individual ERB lines again!)</p>
+
+<h2>major pros</h2>
+
+<h4>Elegance.</h4>
+
+<p>It&rsquo;s shorter, cleaner, and way more beautiful than HTML.</p>
+
+<h4>Faster.</h4>
+
+<p>No more time wasted writing those useless closing tags! No more time wasted commenting out separate lines of code! Allows developers to produce awesome projects faster.</p>
+
+<h4>Closely related to CSS.</h4>
+
+<p>Your HTML code becomes more clearly associated with its CSS. Most useless HTML tags are gone, leaving simply the CSS relationships.</p>
+
+<h4>Whitespace sensitive.</h4>
+
+<p>Everybody must have the same indentations and code form. This will force coders to adhere to standard practices, guaranteeing that others will be able to easily read their code.</p>
+
+<h2>major cons</h2>
+
+<h4>Whitespace sensitive.</h4>
+
+<p>You have to be extra careful with how you indent and write your code. This can be particularly frustrating for some people who would prefer not to have to follow a certain indentation practice or have to worry about whitespace. It can also be extremely hard to debug, since it&rsquo;s not always obvious if there&rsquo;s an extra whitespace in your code since you can&rsquo;t see it!</p>
+
+<h4>Processing speed.</h4>
+
+<p>According to <a href="http://sephinrothcn.wordpress.com/2014/04/14/slim-vs-haml-performance-perspective/">this person</a>, HAML has a slightly slower processing speed than ERB (and SLIM, another markup language focusing on elegant design.)</p>
+
+<h4>Cost of change.</h4>
+
+<p>Most people know HTML. Most people do not know HAML. It takes a bit of time to learn, when you can do the same things in HTML that you can do in HAML.</p>
+
+<h2>change can be frustrating</h2>
+
+<p>&hellip;but it doesn&rsquo;t have to be!</p>
+
+<p>Fortunately, if you do want to use HAML on a project going forward, there are handy websites like <a href="http://html2haml.heroku.com/">Html2Haml</a> that will instantly convert ERB templates to HAML, hassle-free.</p>
+
+<p>You can also create a new Rails app that uses HAML automatically with this command:</p>
+
+<p><code>rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb</code></p>
+
+<p>After you run this command, you will be prompted for several preferences, including templating engine. Then, you can select ERB, HAML, or SLIM. If you choose HAML, it will automatically create your view files with the <code>.html.haml</code> extension.</p>
+
+<p>Now go and produce prettier code with HAML!</p>
+
+<h3>Additional Resources:</h3>
+
+<p><li><a href="http://haml.info/">Haml website</a></li>
+<li>Online HAML conversion: <a href="http://html2haml.heroku.com/">Html2haml</a></li>
+<li><a href="http://slim-lang.com/">Slim website</a></li>
+<li>Online SLIM conversion: <a href="http://html2slim.herokuapp.com/">Html2slim</a></li>
+<li><a href="http://sephinrothcn.wordpress.com/2014/04/14/slim-vs-haml-performance-perspective/">Study on ERB, HAML, SLIM processing speed</a></li></p>
+]]></content>
+  </entry>
+  
+</feed>

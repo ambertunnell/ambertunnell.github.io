@@ -4,7 +4,7 @@
   <title><![CDATA[amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-07-17T23:45:04-04:00</updated>
+  <updated>2014-07-18T02:53:42-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -12,6 +12,327 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Writing beautiful code with haml]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/"/>
+    <updated>2014-07-18T00:25:50-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml</id>
+    <content type="html"><![CDATA[<p>The more I code, the more I think of coding as an art form. Good code is easy to read by other humans, efficient, and easily adaptable. But great code is also elegant. When you look at a great piece of code, it feels <em>right</em>. Similarly, poorly written code, while often functional, just feels wrong and frustrating to look at.</p>
+
+<p>Writing view templates using <a href="http://en.wikipedia.org/wiki/ERuby">ERB</a>, the default Rails templating language, has always seemed unnecessarily messy to me. ERB tags do not flow well with Ruby code or HTML tags. They are time-consuming to write in code. You also cannot use the <code>command-slash</code> commenting shortcut in Sublime Text with them; you must comment out each line of Ruby code separately (which makes them even more time-consuming to maintain).</p>
+
+<p>Therefore, I was delighted when I discovered <a href="http://haml.info/">HAML (HTML abstraction markup language)</a>. A markup language that was designed to replace messy ERB templates with simpler, cleaner design. Why? Because markup should be beautiful.</p>
+
+<p>While this idea may seem crazy to certain people, just take a look at the following basic forms, one written in basic HTML and one in HAML.</p>
+
+<figure class='code'><figcaption><span>basic form_for with erb </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%= form_for(@post) do |f| %&gt;
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= f.label :name %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= f.text_field :name %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= f.label :content %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= f.text_area :content %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= f.fields_for :tags, Tag.new do |tag_form| %&gt;
+</span><span class='line'>      <span class="err">&lt;</span>%= tag_form.label :name, &quot;Name&quot; %&gt;
+</span><span class='line'>      <span class="err">&lt;</span>%= tag_form.text_field :name  %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>% end %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;actions&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= f.submit %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here is the same exact form using HAML instead of ERB:</p>
+
+<figure class='code'><figcaption><span>basic form_for with haml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">=</span> <span class="n">form_for</span><span class="p">(</span><span class="vi">@post</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">field</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:name</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:content</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_area</span> <span class="ss">:content</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">field</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">collection_check_boxes</span> <span class="ss">:tag_ids</span><span class="p">,</span> <span class="no">Tag</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">field</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">fields_for</span> <span class="ss">:tags</span><span class="p">,</span> <span class="no">Tag</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">tag_form</span><span class="o">|</span>
+</span><span class='line'>      <span class="o">=</span> <span class="n">tag_form</span><span class="o">.</span><span class="n">label</span> <span class="ss">:name</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span>
+</span><span class='line'>      <span class="o">=</span> <span class="n">tag_form</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">actions</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>That&rsquo;s 44 percent fewer lines of code, with a cleaner and more elegant design that also took less time to write. You can also comment out the entire section with one command, if desired. (No more commenting out individual ERB lines again!)</p>
+
+<h2>major pros</h2>
+
+<h4>Elegance.</h4>
+
+<p>It&rsquo;s shorter, cleaner, and way more beautiful than HTML.</p>
+
+<h4>Faster.</h4>
+
+<p>No more time wasted writing those useless closing tags! No more time wasted commenting out separate lines of code! Allows developers to produce awesome projects faster.</p>
+
+<h4>Closely related to CSS.</h4>
+
+<p>Your HTML code becomes more clearly associated with its CSS. Most useless HTML tags are gone, leaving simply the CSS relationships.</p>
+
+<h4>Whitespace sensitive.</h4>
+
+<p>Everybody must have the same indentations and code form. This will force coders to adhere to standard practices, guaranteeing that others will be able to easily read their code.</p>
+
+<h2>major cons</h2>
+
+<h4>Whitespace sensitive.</h4>
+
+<p>You have to be extra careful with how you indent and write your code. This can be particularly frustrating for some people who would prefer not to have to follow a certain indentation practice or have to worry about whitespace. It can also be extremely hard to debug, since it&rsquo;s not always obvious if there&rsquo;s an extra whitespace in your code since you can&rsquo;t see it!</p>
+
+<h4>Processing speed.</h4>
+
+<p>According to <a href="http://sephinrothcn.wordpress.com/2014/04/14/slim-vs-haml-performance-perspective/">this person</a>, HAML has a slightly slower processing speed than ERB (and SLIM, another markup language focusing on elegant design.)</p>
+
+<h4>Cost of change.</h4>
+
+<p>Most people know HTML. Most people do not know HAML. It takes a bit of time to learn, when you can do the same things in HTML that you can do in HAML.</p>
+
+<h2>change can be frustrating</h2>
+
+<p>&hellip;but it doesn&rsquo;t have to be!</p>
+
+<p>Fortunately, if you do want to use HAML on a project going forward, there are handy websites like <a href="http://html2haml.heroku.com/">Html2Haml</a> that will instantly convert ERB templates to HAML, hassle-free.</p>
+
+<p>You can also create a new Rails app that uses HAML automatically with this command:</p>
+
+<p><code>rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb</code></p>
+
+<p>After you run this command, you will be prompted for several preferences, including templating engine. Then, you can select ERB, HAML, or SLIM. If you choose HAML, it will automatically create your view files with the <code>.html.haml</code> extension.</p>
+
+<p>Now go and produce prettier code with HAML!</p>
+
+<h3>Additional Resources:</h3>
+
+<p><li><a href="http://haml.info/">Haml website</a></li>
+<li>Online HAML conversion: <a href="http://html2haml.heroku.com/">Html2haml</a></li>
+<li><a href="http://slim-lang.com/">Slim website</a></li>
+<li>Online SLIM conversion: <a href="http://html2slim.herokuapp.com/">Html2slim</a></li>
+<li><a href="http://sephinrothcn.wordpress.com/2014/04/14/slim-vs-haml-performance-perspective/">Study on ERB, HAML, SLIM processing speed</a></li></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[has_and_belongs_to_many]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/"/>
+    <updated>2014-07-14T09:35:55-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many</id>
+    <content type="html"><![CDATA[<p>With Rails 4.1, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
+
+<p>In the past, there were two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model; while with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
+
+<p><code>has_and_belongs_to_many</code> was a subset of <code>has_many, through:</code>.</p>
+
+<p>Now, with Rails 4.1, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code> with an anonymous middle model. This change forces developers to now always include the join model, just as you normally would with <code>has_many, through:</code>.</p>
+
+<p>This change ultimately clears confusion and allows for more versatility in development.</p>
+
+<!-- more -->
+
+
+<p>Let&rsquo;s begin by looking at these scenarios more closely.</p>
+
+<p>Here is HABTM, prior to Rails 4.1:</p>
+
+<figure class='code'><figcaption><span>`has_and_belongs_to_many` prior to Rails 4.1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:actors</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># These models must have three join tables named `actors`, `movies`, and `actors_movies`.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>HABTM was particularly useful if there was no need for you to interact with the join model. Rails assumed it existed and you never had to create it yourself.</p>
+
+<p>But, with HABTM, Rails made certain assumptions about the join table name that the programmer had to be cognizant of. With the Actor and Movie Classes, the assumed join table would be <code>actors_movies</code>. It pluralizes the class names, and joins them in alphabetical order. So, if you added in a table called <code>movies_actors</code>, Rails would not recognize it as the join table for the Actor and Movies Classes.</p>
+
+<p>With Rails 4.1, the Powers That Be decided to eliminate HABTM and make it merely an alias for <code>has_many, through:</code>. In <code>has many, through:</code>, you have to explicitly state the join model, and you can name that model anything you choose.</p>
+
+<figure class='code'><figcaption><span>`has_many, through`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Here are the models with the Rails standard naming conventions:</span>
+</span><span class='line'><span class="c1">#This has a join table `actors_movies`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:movies</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActorMovie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#But, I could have named the join model anything I wanted, like so:</span>
+</span><span class='line'><span class="c1">#This would have a join table `memberships`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:movies</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Membership</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>has many, through:</code> is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names.</p>
+
+<p>With Rails 4.1, you can still use HABTM if you desire, but you will have to add in the join model with the standard naming convention.</p>
+
+<figure class='code'><figcaption><span>`has_and_belongs_to_many` after Rails 4.1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:actors</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActorMovie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use <code>has_many, through:</code> instead of the alias HABTM which is less confusing and more versatile overall.</p>
+
+<h3>Additional Resources:</h3>
+
+<p><li><a href="https://www.youtube.com/watch?v=BTTygyxuGj8">RailsConf 2014 &ndash; Closing Keynote by Aaron Patterson</a> ~ 35-minutes in</li>
+<li><a href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord Documentation</a></li></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Analyzing instance variables in Ruby]]></title>

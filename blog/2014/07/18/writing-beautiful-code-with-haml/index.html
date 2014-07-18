@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>amber_tunnell = Rubyist.new</title>
+  <title>Writing beautiful code with haml - amber_tunnell = Rubyist.new</title>
   <meta name="author" content="Amber Tunnell">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ambertunnell.github.io/blog">
+  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/ambertunnell" rel="alternate" title="amber_tunnell = Rubyist.new" type="application/atom+xml">
@@ -68,13 +68,12 @@
 </nav>
     <div id="main">
       <div id="content">
-    
-
-
-    <article class="post">
+    <div>
+<article class="hentry" role="article">
+  
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/07/18/writing-beautiful-code-with-haml/">Writing beautiful code with haml</a></h1>
+      <h1 class="entry-title">Writing beautiful code with haml</h1>
     
     
       <p class="meta">
@@ -92,15 +91,15 @@
 
 <time datetime="2014-07-18T00:25:50-04:00" pubdate data-updated="true">Jul 18<span>th</span>, 2014</time>
         
-           | <a href="/blog/2014/07/18/writing-beautiful-code-with-haml/#disqus_thread"
-             data-disqus-identifier="http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://ambertunnell.github.io">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>The more I code, the more I think of coding as an art form. Good code is easy to read by other humans, efficient, and easily adaptable. But great code is also elegant. When you look at a great piece of code, it feels <em>right</em>. Similarly, poorly written code, while often functional, just feels wrong and frustrating to look at.</p>
+<div class="entry-content"><p>The more I code, the more I think of coding as an art form. Good code is easy to read by other humans, efficient, and easily adaptable. But great code is also elegant. When you look at a great piece of code, it feels <em>right</em>. Similarly, poorly written code, while often functional, just feels wrong and frustrating to look at.</p>
 
 <p>Writing view templates using <a href="http://en.wikipedia.org/wiki/ERuby">ERB</a>, the default Rails templating language, has always seemed unnecessarily messy to me. ERB tags do not flow well with Ruby code or HTML tags. They are time-consuming to write in code. You also cannot use the <code>command-slash</code> commenting shortcut in Sublime Text with them; you must comment out each line of Ruby code separately (which makes them even more time-consuming to maintain).</p>
 
@@ -252,191 +251,143 @@
 <li>Online SLIM conversion: <a href="http://html2slim.herokuapp.com/">Html2slim</a></li>
 <li><a href="http://sephinrothcn.wordpress.com/2014/04/14/slim-vs-haml-performance-perspective/">Study on ERB, HAML, SLIM processing speed</a></li></p>
 </div>
-  
+
+
+  <footer>
+    <p class="meta">
+      
   
 
+<span class="byline author vcard">Posted by <span class="fn">Amber Tunnell</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-18T00:25:50-04:00" pubdate data-updated="true">Jul 18<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/beautiful-code/'>beautiful code</a>, <a class='category' href='/blog/categories/erb/'>erb</a>, <a class='category' href='/blog/categories/haml/'>haml</a>, <a class='category' href='/blog/categories/html/'>html</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/14/has-and-belongs-to-many/" title="Previous Post: has_and_belongs_to_many">&laquo; has_and_belongs_to_many</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
-
-    <article class="post">
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/14/has-and-belongs-to-many/">has_and_belongs_to_many</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-14T09:35:55-04:00" pubdate data-updated="true">Jul 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/2014/07/14/has-and-belongs-to-many/#disqus_thread"
-             data-disqus-identifier="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With Rails 4.1, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
-
-<p>In the past, there were two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model; while with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
-
-<p><code>has_and_belongs_to_many</code> was a subset of <code>has_many, through:</code>.</p>
-
-<p>Now, with Rails 4.1, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code> with an anonymous middle model. This change forces developers to now always include the join model, just as you normally would with <code>has_many, through:</code>.</p>
-
-<p>This change ultimately clears confusion and allows for more versatility in development.</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/07/14/has-and-belongs-to-many/">Read on &rarr;</a>
-    </footer>
-  
 
-</article>
-
-
-    <article class="post">
-  <header>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
     
-      <h1 class="entry-title"><a href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Analyzing instance variables in Ruby</a></h1>
+      <li class="post">
+        <a href="/blog/2014/07/18/writing-beautiful-code-with-haml/">Writing beautiful code with haml</a>
+      </li>
     
+      <li class="post">
+        <a href="/blog/2014/07/14/has-and-belongs-to-many/">has_and_belongs_to_many</a>
+      </li>
     
-      <p class="meta">
-        
+      <li class="post">
+        <a href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Analyzing instance variables in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/hidden-ruby-magic-tricks/">Ruby magic</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/useful-ruby-resources/">Useful Ruby resources</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ambertunnell">@ambertunnell</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ambertunnell',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
-
+<section id="twitter">
+  <a class="twitter-timeline" href="https://twitter.com/ambertunnell" data-widget-id="488841484926328832">Tweets by @ambertunnell</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+      <p>Follow <a href="http://twitter.com/ambertunnell">@ambertunnell</a></p>
+    
+</section>
 
 
 
 
 
   
+</aside>
 
-
-<time datetime="2014-06-29T21:26:29-04:00" pubdate data-updated="true">Jun 29<span>th</span>, 2014</time>
-        
-           | <a href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/#disqus_thread"
-             data-disqus-identifier="http://ambertunnell.github.io/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, <code>@variable</code>, or through a method call, <code>self.variable</code>. Many Rubyists think these are synonymous. However, they are not.</p>
-
-<p>By accessing the data through the method call, you are protecting the data from being accessed directly. Therefore, if the data changes unexpectedly, you will only have to adjust the one method. If you access the data directly throughout your code, you may have to change it many times so that your code doesn&rsquo;t break.</p>
-
-<p>It is a fine distinction, but can become an incredibly important one the larger your program is.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Read on &rarr;</a>
-    </footer>
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/15/hidden-ruby-magic-tricks/">Ruby magic</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-15T17:53:07-04:00" pubdate data-updated="true">Jun 15<span>th</span>, 2014</time>
-        
-           | <a href="/blog/2014/06/15/hidden-ruby-magic-tricks/#disqus_thread"
-             data-disqus-identifier="http://ambertunnell.github.io/blog/2014/06/15/hidden-ruby-magic-tricks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;ve been learning Ruby for about 2-3 months now, and I&rsquo;ve already fallen in love. Hard. The language is so intuitive that often I find myself trying methods in Ruby that I&rsquo;ve never learned about just because I think there is a good chance they&rsquo;ll work. And, often if they don&rsquo;t do exactly what I thought they did, they still do something interesting that is awesome. </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/15/hidden-ruby-magic-tricks/">Read on &rarr;</a>
-    </footer>
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/03/useful-ruby-resources/">Useful Ruby resources</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-03T22:17:00-04:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2014</time>
-        
-           | <a href="/blog/2014/06/03/useful-ruby-resources/#disqus_thread"
-             data-disqus-identifier="http://ambertunnell.github.io/blog/2014/06/03/useful-ruby-resources/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After being at <i>The Flatiron School</i> for two weeks, I&rsquo;ve come to realize that it&rsquo;s all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here&rsquo;s an on-going list of awesome resources for the beginning Rubyist that I&rsquo;ve learned about so far. If you know of other great resources not yet included, mention them in the comments! </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/03/useful-ruby-resources/">Read on &rarr;</a>
-    </footer>
-  
-
-</article>
-
-<nav id="pagenavi">
-    
-    
-</nav>
 
         </div>
       </div>
@@ -455,7 +406,10 @@
       var disqus_shortname = 'ambertunnelloctoblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/';
+        var disqus_url = 'http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

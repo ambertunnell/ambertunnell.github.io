@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>has_and_belongs_to_many - amber_tunnell = Rubyist.new</title>
+  <meta name="author" content="Amber Tunnell">
+
+  
+  <meta name="description" content="With Rails 4.1, there has been a change to the has_and_belongs_to_many ActiveRecord relationship. In the past, there were two ways to declare a many- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/ambertunnell" rel="alternate" title="amber_tunnell = Rubyist.new" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<!-- <body    class="collapse-sidebar sidebar-footer" > -->
+
+<body>
+  <header role="banner">
+	<div class="header-title"><a href="/">amber_tunnell = Rubyist.new</a></div>
+
+
+	<br><div class="header-subtitle">puts 'my thoughts on the magic that is code'</div>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/ambertunnell" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ambertunnell.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">@blog</a></li>
+  <li><a href="/blog/archives">@archives</a></li>
+  <li><a href="/about">@about</a></li>
+  <li><a href="/projects">@projects</a></li>
+</ul>
+
+</nav>
+    <div id="main">
+      <div id="content">
+    <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">has_and_belongs_to_many</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-14T09:35:55-04:00" pubdate data-updated="true">Jul 14<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://ambertunnell.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>With Rails 4.1, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
+
+<p>In the past, there were two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model; while with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
+
+<p><code>has_and_belongs_to_many</code> was a subset of <code>has_many, through:</code>.</p>
+
+<p>Now, with Rails 4.1, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code> with an anonymous middle model. This change forces developers to now always include the join model, just as you normally would with <code>has_many, through:</code>.</p>
+
+<p>This change ultimately clears confusion and allows for more versatility in development.</p>
+
+<!-- more -->
+
+
+<p>Let&rsquo;s begin by looking at these scenarios more closely.</p>
+
+<p>Here is HABTM, prior to Rails 4.1:</p>
+
+<figure class='code'><figcaption><span>`has_and_belongs_to_many` prior to Rails 4.1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:actors</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># These models must have three join tables named `actors`, `movies`, and `actors_movies`.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>HABTM was particularly useful if there was no need for you to interact with the join model. Rails assumed it existed and you never had to create it yourself.</p>
+
+<p>But, with HABTM, Rails made certain assumptions about the join table name that the programmer had to be cognizant of. With the Actor and Movie Classes, the assumed join table would be <code>actors_movies</code>. It pluralizes the class names, and joins them in alphabetical order. So, if you added in a table called <code>movies_actors</code>, Rails would not recognize it as the join table for the Actor and Movies Classes.</p>
+
+<p>With Rails 4.1, the Powers That Be decided to eliminate HABTM and make it merely an alias for <code>has_many, through:</code>. In <code>has many, through:</code>, you have to explicitly state the join model, and you can name that model anything you choose.</p>
+
+<figure class='code'><figcaption><span>`has_many, through`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Here are the models with the Rails standard naming conventions:</span>
+</span><span class='line'><span class="c1">#This has a join table `actors_movies`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:movies</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActorMovie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#But, I could have named the join model anything I wanted, like so:</span>
+</span><span class='line'><span class="c1">#This would have a join table `memberships`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:movies</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Membership</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>has many, through:</code> is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names.</p>
+
+<p>With Rails 4.1, you can still use HABTM if you desire, but you will have to add in the join model with the standard naming convention.</p>
+
+<figure class='code'><figcaption><span>`has_and_belongs_to_many` after Rails 4.1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:actors</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActorMovie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use <code>has_many, through:</code> instead of the alias HABTM which is less confusing and more versatile overall.</p>
+
+<h3>Additional Resources:</h3>
+
+<p><li><a href="https://www.youtube.com/watch?v=BTTygyxuGj8">RailsConf 2014 &ndash; Closing Keynote by Aaron Patterson</a> ~ 35-minutes in</li>
+<li><a href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord Documentation</a></li></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Amber Tunnell</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-14T09:35:55-04:00" pubdate data-updated="true">Jul 14<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/activerecord/'>ActiveRecord</a>, <a class='category' href='/blog/categories/rails-changes/'>Rails changes</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ruby-on-rails/'>Ruby on Rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/" title="Previous Post: Analyzing instance variables in Ruby">&laquo; Analyzing instance variables in Ruby</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/07/18/writing-beautiful-code-with-haml/" title="Next Post: Writing beautiful code with haml">Writing beautiful code with haml &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/18/writing-beautiful-code-with-haml/">Writing beautiful code with haml</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/14/has-and-belongs-to-many/">has_and_belongs_to_many</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Analyzing instance variables in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/hidden-ruby-magic-tricks/">Ruby magic</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/useful-ruby-resources/">Useful Ruby resources</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ambertunnell">@ambertunnell</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ambertunnell',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section id="twitter">
+  <a class="twitter-timeline" href="https://twitter.com/ambertunnell" data-widget-id="488841484926328832">Tweets by @ambertunnell</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+      <p>Follow <a href="http://twitter.com/ambertunnell">@ambertunnell</a></p>
+    
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  Amber Tunnell <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  
+  </span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'ambertunnelloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/';
+        var disqus_url = 'http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+<script> $(document).ready(function(){  
+  $(".toggle-sidebar").click(function(){
+    $("aside.thirds").toggle();
+  });
+});</script>
+</body>
+</html>
