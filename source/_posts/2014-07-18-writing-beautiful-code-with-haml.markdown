@@ -89,6 +89,8 @@ Most people know HTML. Most people do not know HAML. It takes a bit of time to l
 
 Fortunately, if you do want to use HAML on a project going forward, there are handy websites like [Html2Haml](http://html2haml.heroku.com/) that will instantly convert ERB templates to HAML, hassle-free.
 
+Just make sure you `gem install haml` and require HAML in your project. 
+
 You can also create a new Rails app that uses HAML automatically with this command:
 
 `rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb`
@@ -99,6 +101,7 @@ Now go and produce prettier code with HAML!
 
 
 ###Additional Resources:
+<li>[Haml gem on RubyGems](https://rubygems.org/gems/haml)</li>
 <li>[Haml website](http://haml.info/)</li>
 <li>Online HAML conversion: [Html2haml](http://html2haml.heroku.com/)</li>
 <li>[Slim website](http://slim-lang.com/)</li>
