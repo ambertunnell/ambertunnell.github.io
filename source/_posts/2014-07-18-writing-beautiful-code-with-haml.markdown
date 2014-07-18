@@ -13,6 +13,8 @@ Writing view templates using [ERB](http://en.wikipedia.org/wiki/ERuby), the defa
 
 Therefore, I was delighted when I discovered [HAML (HTML abstraction markup language)](http://haml.info/). A markup language that was designed to replace messy ERB templates with simpler, cleaner design. Why? Because markup should be beautiful.
 
+<!-- more -->
+
 While this idea may seem crazy to certain people, just take a look at the following basic forms, one written in basic HTML and one in HAML.
 
 ```html basic form_for with erb 

@@ -4,15 +4,13 @@ title: has_and_belongs_to_many
 subtitle: change in Rails 4 ActiveRecord associations
 date: 2014-07-14 09:35:55 -0400
 comments: true
-categories: [Ruby, Ruby on Rails, Rails changes, ActiveRecord] 
+categories: [ruby, ruby on rails, rails changes, activerecord] 
 published: false
 ---
 
 With Rails 4.1, there has been a change to the `has_and_belongs_to_many` ActiveRecord relationship. 
 
-In the past, there were two ways to declare a many-to-many relationship between models: `has_and_belongs_to_many` and `has_many, through:`. With `has_many, through:`, you have to explicitly declare a join model; while with `has_and_belongs_to_many`, the join model was implicit.
-
-`has_and_belongs_to_many` was a subset of `has_many, through:`.
+In the past, there were two ways to declare a many-to-many relationship between models: `has_and_belongs_to_many` and `has_many, through:`. With `has_many, through:`, you have to explicitly declare a join model; while with `has_and_belongs_to_many`, the join model was unnecessary. `has_and_belongs_to_many` was a subset of `has_many, through:`.
 
 Now, with Rails 4.1, `has_and_belongs_to_many` has been deleted and is simply an alias for `has_many, through:` with an anonymous middle model. This change forces developers to now always include the join model, just as you normally would with `has_many, through:`.
 
@@ -83,21 +81,7 @@ end
 
 `has many, through:` is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names. 
 
-With Rails 4.1, you can still use HABTM if you desire, but you will have to add in the join model with the standard naming convention.
-
-```ruby `has_and_belongs_to_many` after Rails 4.1
-class Actor < ActiveRecord::Base
-  has_and_belongs_to_many :movies
-end 
-
-class Movie < ActiveRecord::Base
-  has_and_belongs_to_many :actors
-end
-
-class ActorMovie < ActiveRecord::Base
-  belongs_to :movie
-  belongs_to :actor
-end 
+With Rails 4.1, you can still use HABTM if you desire, but it's simply as alias now for `has_many, through:`.
 ```
 
 This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use `has_many, through:` instead of the alias HABTM which is less confusing and more versatile overall. 

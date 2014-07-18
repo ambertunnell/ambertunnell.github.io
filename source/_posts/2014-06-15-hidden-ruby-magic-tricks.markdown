@@ -3,7 +3,7 @@ layout: post
 title: "Ruby magic"
 date: 2014-06-15 17:53:07 -0400
 comments: true
-categories: [Ruby, methods_magic]
+categories: [ruby, methods_magic]
 ---
 
 I've been learning Ruby for about 2-3 months now, and I've already fallen in love. Hard. The language is so intuitive that often I find myself trying methods in Ruby that I've never learned about just because I think there is a good chance they'll work. And, often if they don't do exactly what I thought they did, they still do something interesting that is awesome. <!-- more -->

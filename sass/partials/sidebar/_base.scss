@@ -8,7 +8,7 @@ aside.sidebar {
   a { @extend .force-wrap; }
   section {
     @extend .sans;
-    font-size: .8em;
+    font-size: 1em;
     line-height: 1.4em;
     margin-bottom: 1.5em;
     h1 {
@@ -45,11 +45,14 @@ aside.sidebar {
   a {
     color: inherit;
     @include transition(color .5s);
-    text-decoration:none
+    text-decoration:none;
+  }
+  a:hover{
+  text-decoration:underline;
   }
   &:hover a {
-    color: $sidebar-link-color;
-    &:hover { color: $sidebar-link-color-hover; }
+    color: #8c8c8c;
+    &:hover { color: #8c8c8c; }
   }
 }
 .aside-alt-link {
