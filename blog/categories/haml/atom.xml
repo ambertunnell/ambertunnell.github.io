@@ -4,7 +4,7 @@
   <title><![CDATA[Category: haml | amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/haml/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-07-18T08:47:38-04:00</updated>
+  <updated>2014-07-18T09:01:19-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -140,6 +140,8 @@
 
 <p>Fortunately, if you do want to use HAML on a project going forward, there are handy websites like <a href="http://html2haml.heroku.com/">Html2Haml</a> that will instantly convert ERB templates to HAML, hassle-free.</p>
 
+<p>Just make sure you <code>gem install haml</code> and require HAML in your project.</p>
+
 <p>You can also create a new Rails app that uses HAML automatically with this command:</p>
 
 <p><code>rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb</code></p>
@@ -150,7 +152,8 @@
 
 <h3>Additional Resources:</h3>
 
-<p><li><a href="http://haml.info/">Haml website</a></li>
+<p><li><a href="https://rubygems.org/gems/haml">Haml gem on RubyGems</a></li>
+<li><a href="http://haml.info/">Haml website</a></li>
 <li>Online HAML conversion: <a href="http://html2haml.heroku.com/">Html2haml</a></li>
 <li><a href="http://slim-lang.com/">Slim website</a></li>
 <li>Online SLIM conversion: <a href="http://html2slim.herokuapp.com/">Html2slim</a></li>
