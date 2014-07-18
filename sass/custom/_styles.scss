@@ -288,7 +288,7 @@ h1.entry-title {
 				margin-left: 2.0em;	
 				font-family: 'Helvetica Neue', sans-serif;
 				font-weight: 225;
-				text-decoration: none;
+				text-decoration: none !important;
         color: #398eb5;
 			}
 			a:hover {
@@ -302,27 +302,23 @@ h1.entry-title {
 			font-size: 0.9em;
 		}
 
-    .tags a { 
+    .categories a { 
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 200;
         font-size: 0.9em;
         text-decoration: none;
         letter-spacing: 1px;
         border-bottom: solid 1px #FFFFFF;
-
     }
 
-    .tags a:hover { 
-        color: black !important;
-        
-
+    .categories a:hover { 
+        color: black;
     }
 
 
-    .tags {
+    .categories {
       margin-left: 3em;
       }
-
 
 	 }
   }
