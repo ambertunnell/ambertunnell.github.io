@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-07-18T03:21:25-04:00</updated>
+  <updated>2014-07-18T08:47:38-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -12,99 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[has_and_belongs_to_many]]></title>
-    <link href="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/"/>
-    <updated>2014-07-14T09:35:55-04:00</updated>
-    <id>http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many</id>
-    <content type="html"><![CDATA[<p>With Rails 4.1, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
-
-<p>In the past, there were two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model; while with <code>has_and_belongs_to_many</code>, the join model was unnecessary. <code>has_and_belongs_to_many</code> was a subset of <code>has_many, through:</code>.</p>
-
-<p>Now, with Rails 4.1, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code> with an anonymous middle model. This change forces developers to now always include the join model, just as you normally would with <code>has_many, through:</code>.</p>
-
-<p>This change ultimately clears confusion and allows for more versatility in development.</p>
-
-<!-- more -->
-
-
-<p>Let&rsquo;s begin by looking at these scenarios more closely.</p>
-
-<p>Here is HABTM, prior to Rails 4.1:</p>
-
-<p><code>``ruby</code>has_and_belongs_to_many` prior to Rails 4.1
-class Actor &lt; ActiveRecord::Base
-  has_and_belongs_to_many :movies
-end</p>
-
-<p>class Movie &lt; ActiveRecord::Base
-  has_and_belongs_to_many :actors
-end</p>
-
-<h1>These models must have three join tables named <code>actors</code>, <code>movies</code>, and <code>actors_movies</code>.</h1>
-
-<p>```</p>
-
-<p>HABTM was particularly useful if there was no need for you to interact with the join model. Rails assumed it existed and you never had to create it yourself.</p>
-
-<p>But, with HABTM, Rails made certain assumptions about the join table name that the programmer had to be cognizant of. With the Actor and Movie Classes, the assumed join table would be <code>actors_movies</code>. It pluralizes the class names, and joins them in alphabetical order. So, if you added in a table called <code>movies_actors</code>, Rails would not recognize it as the join table for the Actor and Movies Classes.</p>
-
-<p>With Rails 4.1, the Powers That Be decided to eliminate HABTM and make it merely an alias for <code>has_many, through:</code>. In <code>has many, through:</code>, you have to explicitly state the join model, and you can name that model anything you choose.</p>
-
-<p><code>``ruby</code>has_many, through`</p>
-
-<h1>Here are the models with the Rails standard naming conventions:</h1>
-
-<h1>This has a join table <code>actors_movies</code></h1>
-
-<p>class Actor &lt; ActiveRecord::Base
-  has_many: :actor_movies
-  has_many: :movies, through: :actor_movies
-end</p>
-
-<p>class Movie &lt; ActiveRecord::Base
-  has_many: :actor_movies
-  has_many: :actors, through: :actor_movies
-end</p>
-
-<p>class ActorMovie &lt; ActiveRecord::Base
-  belongs_to :movie
-  belongs_to :actor
-end</p>
-
-<h1>But, I could have named the join model anything I wanted, like so:</h1>
-
-<h1>This would have a join table <code>memberships</code></h1>
-
-<p>class Actor &lt; ActiveRecord::Base
-  has_many: :memberships
-  has_many: :movies, through: :memberships
-end</p>
-
-<p>class Movie &lt; ActiveRecord::Base
-  has_many: :memberships
-  has_many: :actors, through: :memberships
-end</p>
-
-<p>class Membership &lt; ActiveRecord::Base
-  belongs_to :movie
-  belongs_to :actor
-end
-```</p>
-
-<p><code>has many, through:</code> is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names.</p>
-
-<p>With Rails 4.1, you can still use HABTM if you desire, but it&rsquo;s simply as alias now for <code>has_many, through:</code>.</p>
-
-<p>This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use <code>has_many, through:</code> instead of the alias HABTM which is less confusing and more versatile overall.</p>
-
-<h3>Additional Resources:</h3>
-
-<p><li><a href="https://www.youtube.com/watch?v=BTTygyxuGj8">RailsConf 2014 &ndash; Closing Keynote by Aaron Patterson</a> ~ 35-minutes in</li>
-<li><a href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord Documentation</a></li></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Analyzing instance variables in Ruby]]></title>
