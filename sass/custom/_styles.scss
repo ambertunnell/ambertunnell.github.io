@@ -10,7 +10,7 @@ body {
 	font-size: 17px;
 	font-weight: 200;
 	color: #333;
-	max-width: 850px;
+	max-width: 1200px;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	
@@ -172,6 +172,9 @@ article {
 	a, a:visited {
 		color: #1863A1;
 	}
+
+  margin-right: 40px;
+  text-alignment: justified;
 }
 
 #content {
@@ -266,11 +269,6 @@ figure.code {
 	background: #fafafa !important;
 }
 
-
-aside {
-	display: none;
-
-}
 
 h1.entry-title {
 	font-family: 'Handlee', cursive !important;
@@ -381,7 +379,7 @@ h1.entry-title {
 .about-me h2 {
 	font-family: Handlee;
 	color: #398eb5;
-  text-align: center; 
+  text-align: left; 
 }
 
 .about-me {
@@ -404,38 +402,13 @@ h1.entry-title {
 .social-media-section  {
 	margin: 30px 0px 30px;
   padding: 10px;
-	text-align: center;
-  float: center;
+	text-align: left;
 }
 
-.github_repos {
-  margin: 40px 0px 30px;
-  padding: 10px;
-  text-align: center;
-  float: center;
-}
-
-.github_repos h2 {
-  font-family: Handlee;
-  font-weight: bold;
-  color: #398eb5;
-  font-size: 1.5em;
-}
-
-.github_repos a {
-  color: #398eb5;
-  text-decoration: none;
-}
-
-.github_repos a:hover {
-  text-decoration: underline;
-}
 
 .email {
   margin: 30px 0px 30px;
   padding: 10px;
-  text-align: center;
-  float: center;
 }
 
 .email h2 {

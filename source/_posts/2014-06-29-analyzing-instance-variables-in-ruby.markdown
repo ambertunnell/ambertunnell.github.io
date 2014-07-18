@@ -144,3 +144,6 @@ The only thing we did this time for that change is delete the default `attr_read
 The difference may seem insignificant. And, in small programs, it probably is. But, as programs grow larger, this may make a significant difference in how costly one change may be.If you are only directly accessing the data of an instance variable in one place, you only have to change it in one place. But, if you are directly accessing it hundreds of times, you may have to look at all of those pieces to verify that they won't break now that the value of a variable has changed.
 
 So, the take-away: always hide data from yourself. It is the best defensive strategy to protect your code from unexpected changes.  
+
+###Additional Resources:
+<li>[Practical Object-Oriented Design in Ruby (POODR)](http://www.poodr.com/) by Sandi Metz</li>

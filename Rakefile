@@ -151,6 +151,7 @@ task :new_page, :filename do |t, args|
       page.puts "comments: true"
       page.puts "sharing: true"
       page.puts "footer: true"
+      page.puts "published: false"
       page.puts "---"
     end
   else

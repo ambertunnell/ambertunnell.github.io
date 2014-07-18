@@ -13,11 +13,13 @@ aside.sidebar {
     margin-bottom: 1.5em;
     h1 {
       margin: 1.5em 0 0;
+      color: #398eb5; 
       padding-bottom: .2em;
       border-bottom: 1px solid $sidebar-border;
       @extend .side-shadow-border;
       + p {
         padding-top: .4em;
+
       }
     }
   }
@@ -43,6 +45,7 @@ aside.sidebar {
   a {
     color: inherit;
     @include transition(color .5s);
+    text-decoration:none
   }
   &:hover a {
     color: $sidebar-link-color;
@@ -65,6 +68,7 @@ aside.sidebar {
     color: mix($text-color-light, $sidebar-bg);
     width: 9px;
     cursor: pointer;
+    border-left: 1px solid $sidebar-border;
     &:hover {
       background: mix($sidebar-border, $sidebar-bg);
       @include background(linear-gradient(left, rgba($sidebar-border, .5), rgba($sidebar-border, 0)));
