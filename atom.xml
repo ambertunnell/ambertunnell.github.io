@@ -4,7 +4,7 @@
   <title><![CDATA[amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-07-15T13:11:26-04:00</updated>
+  <updated>2014-07-17T23:13:12-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -14,13 +14,172 @@
 
   
   <entry>
-    
+    <title type="html"><![CDATA[has_and_belongs_to_many]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many/"/>
+    <updated>2014-07-14T09:35:55-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/07/14/has-and-belongs-to-many</id>
+    <content type="html"><![CDATA[<p>With Rails 4.1, there has been a change to the <code>has_and_belongs_to_many</code> ActiveRecord relationship.</p>
+
+<p>In the past, there were two ways to declare a many-to-many relationship between models: <code>has_and_belongs_to_many</code> and <code>has_many, through:</code>. With <code>has_many, through:</code>, you have to explicitly declare a join model; while with <code>has_and_belongs_to_many</code>, the join model was implicit.</p>
+
+<p><code>has_and_belongs_to_many</code> was a subset of <code>has_many, through:</code>.</p>
+
+<p>Now, with Rails 4.1, <code>has_and_belongs_to_many</code> has been deleted and is simply an alias for <code>has_many, through:</code> with an anonymous middle model. This change forces developers to now always include the join model, just as you normally would with <code>has_many, through:</code>.</p>
+
+<p>This change ultimately clears confusion and allows for more versatility in development.</p>
+
+<!-- more -->
+
+
+<p>Let&rsquo;s begin by looking at these scenarios more closely.</p>
+
+<p>Here is HABTM, prior to Rails 4.1:</p>
+
+<figure class='code'><figcaption><span>`has_and_belongs_to_many` prior to Rails 4.1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:actors</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># These models must have three join tables named `actors`, `movies`, and `actors_movies`.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>HABTM was particularly useful if there was no need for you to interact with the join model. Rails assumed it existed and you never had to create it yourself.</p>
+
+<p>But, with HABTM, Rails made certain assumptions about the join table name that the programmer had to be cognizant of. With the Actor and Movie Classes, the assumed join table would be <code>actors_movies</code>. It pluralizes the class names, and joins them in alphabetical order. So, if you added in a table called <code>movies_actors</code>, Rails would not recognize it as the join table for the Actor and Movies Classes.</p>
+
+<p>With Rails 4.1, the Powers That Be decided to eliminate HABTM and make it merely an alias for <code>has_many, through:</code>. In <code>has many, through:</code>, you have to explicitly state the join model, and you can name that model anything you choose.</p>
+
+<figure class='code'><figcaption><span>`has_many, through`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Here are the models with the Rails standard naming conventions:</span>
+</span><span class='line'><span class="c1">#This has a join table `actors_movies`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:movies</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:actor_movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActorMovie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#But, I could have named the join model anything I wanted, like so:</span>
+</span><span class='line'><span class="c1">#This would have a join table `memberships`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:movies</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span><span class="p">:</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Membership</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>has many, through:</code> is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names.</p>
+
+<p>With Rails 4.1, you can still use HABTM if you desire, but you will have to add in the join model with the standard naming convention.</p>
+
+<figure class='code'><figcaption><span>`has_and_belongs_to_many` after Rails 4.1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Actor</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:movies</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Movie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:actors</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActorMovie</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:movie</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:actor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use <code>has_many, through:</code> instead of the alias HABTM which is less confusing and more versatile overall.</p>
+
+<h3>Additional Resources:</h3>
+
+<p><li><a href="https://www.youtube.com/watch?v=BTTygyxuGj8">RailsConf 2014 &ndash; Closing Keynote by Aaron Patterson</a> ~ 35-minutes in</li>
+<li><a href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord Documentation</a></li></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Analyzing instance variables in Ruby]]></title>
     <link href="http://ambertunnell.github.io/blog/2014/06/29/analyzing-instance-variables-in-ruby/"/>
-    
     <updated>2014-06-29T21:26:29-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/06/29/analyzing-instance-variables-in-ruby</id>
-    
     <content type="html"><![CDATA[<p>Instance variables in Ruby can be accessed in two ways. Directly with an @ symbol, <code>@variable</code>, or through a method call, <code>self.variable</code>. Many Rubyists think these are synonymous. However, they are not.</p>
 
 <p>By accessing the data through the method call, you are protecting the data from being accessed directly. Therefore, if the data changes unexpectedly, you will only have to adjust the one method. If you access the data directly throughout your code, you may have to change it many times so that your code doesn&rsquo;t break.</p>
@@ -257,18 +416,18 @@ One could argue that we could&rsquo;ve just initialized @age to be equal to age+
 <p>The difference may seem insignificant. And, in small programs, it probably is. But, as programs grow larger, this may make a significant difference in how costly one change may be.If you are only directly accessing the data of an instance variable in one place, you only have to change it in one place. But, if you are directly accessing it hundreds of times, you may have to look at all of those pieces to verify that they won&rsquo;t break now that the value of a variable has changed.</p>
 
 <p>So, the take-away: always hide data from yourself. It is the best defensive strategy to protect your code from unexpected changes.</p>
+
+<h3>Additional Resources:</h3>
+
+<p><li><a href="http://www.poodr.com/">Practical Object-Oriented Design in Ruby (POODR)</a> by Sandi Metz</li></p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
     <title type="html"><![CDATA[Ruby magic]]></title>
     <link href="http://ambertunnell.github.io/blog/2014/06/15/hidden-ruby-magic-tricks/"/>
-    
     <updated>2014-06-15T17:53:07-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/06/15/hidden-ruby-magic-tricks</id>
-    
     <content type="html"><![CDATA[<p>I&rsquo;ve been learning Ruby for about 2-3 months now, and I&rsquo;ve already fallen in love. Hard. The language is so intuitive that often I find myself trying methods in Ruby that I&rsquo;ve never learned about just because I think there is a good chance they&rsquo;ll work. And, often if they don&rsquo;t do exactly what I thought they did, they still do something interesting that is awesome. <!-- more --></p>
 
 <p>In this post, I plan to discuss hidden Ruby tricks that many beginning Rubyists might not know about (yet!) that I&rsquo;ve discovered online or through playing around with Ruby. This is by no means a comprehensive list, but I hope it illustrates a few of Ruby&rsquo;s awesome tricks. They are all included in the <a href="http://ruby-doc.org/">Ruby Documentation</a> if you want to learn more. Also, shout out in the comments if you know of any other good ones to add to the list!</p>
@@ -431,17 +590,13 @@ One could argue that we could&rsquo;ve just initialized @age to be equal to age+
 
 
 ]]></content>
-    
   </entry>
   
   <entry>
-    
     <title type="html"><![CDATA[Useful Ruby resources]]></title>
     <link href="http://ambertunnell.github.io/blog/2014/06/03/useful-ruby-resources/"/>
-    
     <updated>2014-06-03T22:17:00-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/06/03/useful-ruby-resources</id>
-    
     <content type="html"><![CDATA[<p>After being at <i>The Flatiron School</i> for two weeks, I&rsquo;ve come to realize that it&rsquo;s all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here&rsquo;s an on-going list of awesome resources for the beginning Rubyist that I&rsquo;ve learned about so far. If you know of other great resources not yet included, mention them in the comments! <!-- more --></p>
 
 <h3><a href="http://ruby-doc.org/">Ruby Documentation</a></h3>
@@ -486,7 +641,6 @@ One could argue that we could&rsquo;ve just initialized @age to be equal to age+
 
 
 ]]></content>
-    
   </entry>
   
 </feed>

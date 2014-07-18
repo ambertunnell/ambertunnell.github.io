@@ -1,4 +1,10 @@
 $(function(){
+  
+  // hides sidebar
+  $(".toggle-sidebar").click(function(){
+    $("aside.thirds").toggle();
+  });
+
   $('[rel="tooltip"]').tooltip();
 
   if ( window.location.pathname == '/' ) {
