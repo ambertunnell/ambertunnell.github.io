@@ -4,7 +4,7 @@
   <title><![CDATA[Category: activerecord | amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-07-18T03:17:31-04:00</updated>
+  <updated>2014-07-18T03:21:25-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -95,8 +95,7 @@ end
 
 <p><code>has many, through:</code> is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names.</p>
 
-<p>With Rails 4.1, you can still use HABTM if you desire, but it&rsquo;s simply as alias now for <code>has_many, through:</code>.
-```</p>
+<p>With Rails 4.1, you can still use HABTM if you desire, but it&rsquo;s simply as alias now for <code>has_many, through:</code>.</p>
 
 <p>This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use <code>has_many, through:</code> instead of the alias HABTM which is less confusing and more versatile overall.</p>
 
