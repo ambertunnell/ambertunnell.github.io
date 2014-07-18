@@ -165,13 +165,21 @@ article {
 		}
 	}
 
+  h2 {
+    color: #398eb5;
+  }
+
 	ul, ol {
 		margin-left: 2em;
 	}
 
 	a, a:visited {
-		color: #1863A1;
+    color: #398eb5 !important;
+    text-decoration: none !important;
 	}
+  a:hover {
+    text-decoration: underline;
+  }
 
   margin-right: 40px;
   text-alignment: justified;
