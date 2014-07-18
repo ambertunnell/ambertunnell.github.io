@@ -82,7 +82,6 @@ end
 `has many, through:` is particularly useful if you have any need to interact with the join model (for example, you wanted to add in validations, etc.) or if you just want the power to name the join table something more sensible than the concatenated table names. 
 
 With Rails 4.1, you can still use HABTM if you desire, but it's simply as alias now for `has_many, through:`.
-```
 
 This change is both good and bad. It causes more work for the developer, but it may clear up confusion by forcing developers to always add in a join model (as opposed to only in certain instances). Also, with this change, most developers will probably choose to simply use `has_many, through:` instead of the alias HABTM which is less confusing and more versatile overall. 
 
