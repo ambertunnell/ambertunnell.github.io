@@ -9,11 +9,12 @@ aside.sidebar {
   section {
     @extend .sans;
     font-size: 1em;
-    line-height: 1.4em;
-    margin-bottom: 1.5em;
+    line-height: 1.2em;
+    margin-bottom: 1.2em;
     h1 {
       margin: 1.5em 0 0;
       color: #398eb5; 
+      font-family: 'Handlee', cursive !important;
       padding-bottom: .2em;
       border-bottom: 1px solid $sidebar-border;
       @extend .side-shadow-border;
@@ -26,7 +27,7 @@ aside.sidebar {
   img {
     @extend .flex-content;
     @extend .basic-alignment;
-    @include shadow-box($border: #fff .3em solid);
+    
   }
   ul {
     margin-bottom: 0.5em;
@@ -36,7 +37,7 @@ aside.sidebar {
     list-style: none;
     padding: .5em 0;
     margin: 0;
-    border-bottom: 1px solid $sidebar-border;
+    border-bottom: 0px solid $sidebar-border;
     @extend .side-shadow-border;
     p:last-child {
       margin-bottom: 0;

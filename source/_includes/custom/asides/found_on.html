@@ -1,29 +1,36 @@
-<h2>found on</h2>
-{% if site.github_user %}
-<a href="https://github.com/{{site.github_user}}/" rel="tooltip" title="Github" target="_blank"><img class="social_icon" title="Github" alt="github icon" src="{{ root_url }}/images/social_icons/github.png"></a>
-{% endif %}
+<section>
+<h1>found on</h1>
 
-{% if site.stackoverflow_user %}
-<a href="http://stackoverflow.com/users/{{site.stackoverflow_user}}/" rel="tooltip" title="Stack Overflow" target="_blank"><img class="social_icon" title="Stack Overflow" alt="stack overflow icon" src="{{ root_url }}/images/glyphicons_400_stack_overflow.png"></a>
-{% endif %}
+  <div class="social-media-section">
+    {% if site.github_user %}
+    <a href="https://github.com/{{site.github_user}}/" class="social_media" class="github" rel="tooltip" title="Github" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-github.png" 
+    onmouseover="this.src='{{ root_url }}/images/social_icons/github.png'"
+    onmouseout="this.src='{{ root_url }}/images/social_icons/bw-github.png'" height="45" width="45"/></A>
+    {% endif %}
 
-{% if site.linkedin_user %}
-<a href="http://www.linkedin.com/in/{{site.linkedin_user}}" rel="tooltip" title="Linkedin" target="_blank"><img class="social_icon" title="Linkedin" alt="Linkedin icon" src="{{ root_url }}/images/social_icons/linkedin.png"></a>
-{% endif %}
+    {% if site.stackoverflow_user %}
+    <a href="http://stackoverflow.com/users/3826943/amber-tunnell" class="social_media" class="stackoverflow" rel="tooltip" title="Stack Overflow" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-stackoverflow.png" 
+    onmouseover="this.src='{{ root_url }}/images/social_icons/stackoverflow.png'"
+    onmouseout="this.src='{{ root_url }}/images/social_icons/bw-stackoverflow.png'" height="45" width="45" /></A>
+    {% endif %}
 
-{% if site.twitter_user %}
-<a href="http://twitter.com/{{site.twitter_user}}" rel="tooltip" title="Twitter" target="_blank"><img class="social_icon" title="Twitter" alt="Twitter icon" src="{{ root_url }}/images/social_icons/twitter.png"></a>
-{% endif %}
+    {% if site.linkedin_user %}
+    <a href="https://linkedin.com/in/{{site.linkedin_user}}/" class="social_media" class="linkedin" rel="tooltip" title="Linkedin" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-linkedin.png" 
+    onmouseover="this.src='{{ root_url }}/images/social_icons/linkedin.png'"
+    onmouseout="this.src='{{ root_url }}/images/social_icons/bw-linkedin.png'" height="45" width="45" /></A>
+    {% endif %}
 
-{% if site.googleplus_user %}
-<a href="https://plus.google.com/{{site.googleplus_user}}?rel=author" rel="tooltip" title="Google Plus" target="_blank"><img class="social_icon" title="Google Plus" alt="Google Plus icon" src="{{ root_url }}/images/social_icons/googleplus.png"></a>
-{% endif %}
+    {% if site.twitter_user %}
+    <a href="https://twitter.com/{{site.twitter_user}}/" class="social_media" class="twitter" rel="tooltip" title="Twitter" target="_blank"><img src="{{ root_url }}/images/social_icons/bw-twitter.png" 
+    onmouseover="this.src='{{ root_url }}/images/social_icons/twitter.png'"
+    onmouseout="this.src='{{ root_url }}/images/social_icons/bw-twitter.png'" height="45" width="45" /></A>
+    {% endif %}
+ </div>   
+</section>
 
-{% if site.quora_user %}
-<a href="http://www.quora.com/{{site.quora_user}}" rel="tooltip" title="Quora" target="_blank"><img class="social_icon" title="Quora" alt="Quora icon" src="{{ root_url }}/images/glyphicons_385_quora.png"></a>
-{% endif %}
-
-{% if site.email %}
-<h2>contact at</h2>
-<a href="mailto:{{ site.email }}">{{ site.email }}</a>
-{% endif %}
+<section>
+  {% if site.email %}
+  <h1>contact at</h1>
+  <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+  {% endif %}
+</section>
