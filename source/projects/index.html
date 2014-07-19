@@ -1,0 +1,27 @@
+---
+layout: default
+title: about
+footer: false
+---
+<div class="container">
+  <article role="article">
+    <header>
+      <h1 class="entry-title">projects</h1>
+    </header> 
+    <body>  
+      <div class="projects-page">
+        coming soon!
+      </div>
+    </body>
+  </article>
+</div>
+
+{% unless page.sidebar == false %}
+<aside class="sidebar">
+  {% if site.page_asides.size %}
+    {% include_array page_asides %}
+  {% else %}
+    {% include_array default_asides %}
+  {% endif %}
+</aside>
+{% endunless %}
