@@ -10,7 +10,7 @@ categories: [sorting algorithms, ruby, computer science]
 
 We'll start with Bubble Sort.
 
-**Bubble sort** is a simple sorting algorithm. 
+**Bubble Sort** is a simple sorting algorithm. 
 
 <ol>
   <li>You start by comparing the first two items in an array. If the first item is larger than the second, you swap the two items.</li> 
@@ -19,6 +19,8 @@ We'll start with Bubble Sort.
   <li>Then, you start from the beginning again and repeat the process until you have one full pass of the array in which you did not swap any items.</li>
   <li>You now have a sorted array!</li>
 </ol>
+
+<!-- more -->
 
 The name 'bubble sort' derives from the event of the smaller numbers slowly 'bubbling' to the front of the array through the swapping process. 
 
