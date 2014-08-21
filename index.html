@@ -117,74 +117,14 @@
 </ol>
 
 
-<p>The name &lsquo;bubble sort&rsquo; derives from the event of the smaller numbers slowly &lsquo;bubbling&rsquo; to the front of the array through the swapping process.</p>
-
-<p style="text-align:center;"> <img src="http://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif" title="Bubble Sort" alt="bubble sort video" /></p>
-
-<p>Here&rsquo;s the bubble sort algorithm implemented in Ruby.</p>
-
-<figure class='code'><figcaption><span>bubble sort</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">BubbleSort</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@array</span> <span class="o">=</span> <span class="n">array</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">sort</span>
-</span><span class='line'>    <span class="kp">loop</span> <span class="k">do</span>
-</span><span class='line'>      <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'>      <span class="n">swap_number</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>     <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="vi">@array</span><span class="o">.</span><span class="n">length</span>
-</span><span class='line'>       <span class="k">if</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>        <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'>        <span class="n">swap_number</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>       <span class="k">end</span>
-</span><span class='line'>       <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-</span><span class='line'>     <span class="k">end</span>
-</span><span class='line'>      <span class="k">break</span> <span class="k">if</span> <span class="n">swap_number</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">return</span> <span class="vi">@array</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">print</span> <span class="no">BubbleSort</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6]</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with a worst-case time complexity of О(n<sup>2</sup>).</p>
-
-<p>In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.</p>
-
-<p>That being said, bubble sort is still a very undesirable and inefficient sorting technique.</p>
-
-<p><em>This is the first post of a series of posts on various sorting algorithms.</em></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/20/bubble-sort-in-ruby/">Read on &rarr;</a>
+    </footer>
   
 
 

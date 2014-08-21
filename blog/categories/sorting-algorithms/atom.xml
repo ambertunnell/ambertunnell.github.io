@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sorting algorithms | amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-08-20T22:31:03-04:00</updated>
+  <updated>2014-08-20T22:34:33-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -31,6 +31,11 @@
   <li>Then, you start from the beginning again and repeat the process until you have one full pass of the array in which you did not swap any items.</li>
   <li>You now have a sorted array!</li>
 </ol>
+
+
+
+
+<!-- more -->
 
 
 <p>The name &lsquo;bubble sort&rsquo; derives from the event of the smaller numbers slowly &lsquo;bubbling&rsquo; to the front of the array through the swapping process.</p>
