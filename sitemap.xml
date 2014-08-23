@@ -2,11 +2,11 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://ambertunnell.github.io/blog/2014/06/03/useful-ruby-resources/</loc>
-        <lastmod>2014-07-18T21:58:21-04:00</lastmod>
+        <lastmod>2014-08-23T18:14:20-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/blog/2014/06/15/hidden-ruby-magic-tricks/</loc>
-        <lastmod>2014-07-18T21:58:21-04:00</lastmod>
+        <lastmod>2014-08-23T18:14:16-04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -16,35 +16,39 @@
     </url>
     <url>
         <loc>http://ambertunnell.github.io/blog/2014/07/18/writing-beautiful-code-with-haml/</loc>
-        <lastmod>2014-07-18T21:58:21-04:00</lastmod>
+        <lastmod>2014-08-23T18:14:08-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-20T23:03:11-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/</loc>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/about/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/archives/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/blog/archives/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/blog/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/projects/</loc>
-        <lastmod>2014-08-20T22:34:08-04:00</lastmod>
+        <lastmod>2014-08-23T18:19:14-04:00</lastmod>
     </url>
     <url>
         <loc>http://ambertunnell.github.io/robots.txt</loc>

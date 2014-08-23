@@ -9,7 +9,7 @@
   <meta name="author" content="Amber Tunnell">
 
   
-  <meta name="description" content="Sorting algorithms are rarely discussed in Ruby. Most sorting algorithm problems can be solved quite easily by using built-in Ruby methods. That &hellip;">
+  <meta name="description" content="Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,6 +33,18 @@
 <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '53821540']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -76,6 +88,60 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/08/23/insertion-sort-in-ruby/">Insertion Sort in Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-23T16:01:26-04:00" pubdate data-updated="true">Aug 23<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/2014/08/23/insertion-sort-in-ruby/#disqus_thread"
+             data-disqus-identifier="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the correct place in the new sorted array.</p>
+
+<ol>
+  <li>First, take the first element of the unsorted array out of the array and put it into an empty new array.</li> 
+  <li>Take the next element out of the unsorted array and place it into the new array. If it is smaller than the first element in the new array, swap them. If not, leave it at the end.
+  <li>Take the next element out of the array and put it at the end of the new array. If it is larger than the previous end element, leave it. If not, iterate through the array until you find its correct position and insert it there.
+  <li>Continue this process until your original array is empty and you have a new completely sorted array.</li>
+</ol>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/23/insertion-sort-in-ruby/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/08/20/bubble-sort-in-ruby/">Bubble Sort in Ruby</a></h1>
     
     
@@ -106,7 +172,7 @@
 
 <p>We&rsquo;ll start with Bubble Sort.</p>
 
-<p><strong>Bubble sort</strong> is a simple sorting algorithm.</p>
+<p><strong>Bubble Sort</strong> is a simple sorting algorithm.</p>
 
 <ol>
   <li>You start by comparing the first two items in an array. If the first item is larger than the second, you swap the two items.</li> 
@@ -323,6 +389,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/08/23/insertion-sort-in-ruby/">Insertion Sort in Ruby</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/20/bubble-sort-in-ruby/">Bubble Sort in Ruby</a>
       </li>
     
@@ -338,26 +408,18 @@
         <a href="/blog/2014/06/15/hidden-ruby-magic-tricks/">Ruby magic</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/03/useful-ruby-resources/">Useful Ruby resources</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/beautiful-code/'>beautiful code (1)</a></li>
-<li class='category'><a href='/blog/categories/computer-science/'>computer science (1)</a></li>
-<li class='category'><a href='/blog/categories/erb/'>erb (1)</a></li>
+    <li class='category'><a href='/blog/categories/computer-science/'>computer science (2)</a></li>
 <li class='category'><a href='/blog/categories/haml/'>haml (1)</a></li>
-<li class='category'><a href='/blog/categories/html/'>html (1)</a></li>
 <li class='category'><a href='/blog/categories/instance-variables/'>instance variables (1)</a></li>
-<li class='category'><a href='/blog/categories/methods-magic/'>methods_magic (1)</a></li>
 <li class='category'><a href='/blog/categories/resources/'>resources (1)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
 <li class='category'><a href='/blog/categories/self/'>self (1)</a></li>
-<li class='category'><a href='/blog/categories/sorting-algorithms/'>sorting algorithms (1)</a></li>
+<li class='category'><a href='/blog/categories/sorting-algorithms/'>sorting algorithms (2)</a></li>
 
   </ul>
 </section>

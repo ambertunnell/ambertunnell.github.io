@@ -4,7 +4,7 @@
   <title><![CDATA[amber_tunnell = Rubyist.new]]></title>
   <link href="http://ambertunnell.github.io/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-08-20T22:34:33-04:00</updated>
+  <updated>2014-08-23T18:29:03-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -12,6 +12,97 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Insertion Sort in Ruby]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/"/>
+    <updated>2014-08-23T16:01:26-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby</id>
+    <content type="html"><![CDATA[<p>Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the correct place in the new sorted array.</p>
+
+<ol>
+  <li>First, take the first element of the unsorted array out of the array and put it into an empty new array.</li> 
+  <li>Take the next element out of the unsorted array and place it into the new array. If it is smaller than the first element in the new array, swap them. If not, leave it at the end.
+  <li>Take the next element out of the array and put it at the end of the new array. If it is larger than the previous end element, leave it. If not, iterate through the array until you find its correct position and insert it there.
+  <li>Continue this process until your original array is empty and you have a new completely sorted array.</li>
+</ol>
+
+
+
+
+<!-- more -->
+
+
+<p style="text-align:center;"> <img src="http://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" title="Insertion Sort" alt="insertion sort video" /></p>
+
+<p>While more efficent than Bubble Sort, Insertion Sort still has the same average and worse case time complexity of O(n<sup>2</sup>). Like Bubble Sort, it is very inefficient for large data sets, but rather efficient for small data sets or data sets already mostly sorted (the best case time complexity is O(n)).</p>
+
+<p>Implementation of Insertion Sort in Ruby.</p>
+
+<figure class='code'><figcaption><span>insertion sort</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">InsertionSort</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@array</span> <span class="o">=</span> <span class="n">array</span>
+</span><span class='line'>    <span class="vi">@sorted_array</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">sort</span>
+</span><span class='line'>    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">while</span> <span class="vi">@array</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="vi">@sorted_array</span> <span class="o">&lt;&lt;</span> <span class="vi">@array</span><span class="o">.</span><span class="n">shift</span>
+</span><span class='line'>      <span class="k">if</span> <span class="vi">@sorted_array</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="vi">@sorted_array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@sorted_array</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+</span><span class='line'>        <span class="vi">@sorted_array</span><span class="o">.</span><span class="n">each</span><span class="o">.</span><span class="n">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>          <span class="k">if</span> <span class="vi">@sorted_array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@sorted_array</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>            <span class="vi">@sorted_array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="vi">@sorted_array</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@sorted_array</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="vi">@sorted_array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>          <span class="k">if</span> <span class="p">(</span><span class="vi">@sorted_array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span>  <span class="vi">@sorted_array</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="vi">@sorted_array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@sorted_array</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>            <span class="vi">@sorted_array</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="vi">@sorted_array</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>            <span class="vi">@sorted_array</span><span class="o">.</span><span class="n">slice!</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="vi">@sorted_array</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">print</span> <span class="no">InsertionSort</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>This is the second post of a series of posts on various sorting algorithms. See the first here: <a href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/">Bubble Sort</a></em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bubble Sort in Ruby]]></title>
@@ -22,7 +113,7 @@
 
 <p>We&rsquo;ll start with Bubble Sort.</p>
 
-<p><strong>Bubble sort</strong> is a simple sorting algorithm.</p>
+<p><strong>Bubble Sort</strong> is a simple sorting algorithm.</p>
 
 <ol>
   <li>You start by comparing the first two items in an array. If the first item is larger than the second, you swap the two items.</li> 
@@ -97,7 +188,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with a worst-case time complexity of О(n<sup>2</sup>).</p>
+<p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with an average and worst-case time complexity of О(n<sup>2</sup>).</p>
 
 <p>In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.</p>
 
