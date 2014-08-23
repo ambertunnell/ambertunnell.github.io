@@ -56,7 +56,7 @@ end
 print BubbleSort.new([4,1,2,6,3,5]).sort #=> [1, 2, 3, 4, 5, 6]
 ```
 
-One of the biggest problems with using bubble sort is that it isn't practical on large data sets. It is incredibly inefficient with a worst-case time complexity of О(n^2). 
+One of the biggest problems with using bubble sort is that it isn't practical on large data sets. It is incredibly inefficient with an average and worst-case time complexity of О(n^2). 
 
 In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.
 
