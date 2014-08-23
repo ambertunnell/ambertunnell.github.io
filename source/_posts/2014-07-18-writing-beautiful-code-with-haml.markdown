@@ -3,7 +3,7 @@ layout: post
 title: "Writing beautiful code with haml"
 date: 2014-07-18 00:25:50 -0400
 comments: true
-categories: [haml, erb, html, beautiful code]
+categories: [haml]
 published: true
 ---
 
