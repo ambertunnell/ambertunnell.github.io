@@ -386,15 +386,22 @@ h1.entry-title {
 }
 
 .about-me {
-	text-alignment: justified;
+	text-align: justified;
 }
 
-.social_media {
-  margin: 10px 5px 25px;
+.social-media-icon {
+  margin: 10px 10px 25px;
   width: 60px;
   height: 60px;
-  display: inline;
-  
+  display: inline;  
+}
+
+.social_media{
+  color: #333;
+}
+
+.social_media:hover {
+  color: #398eb5;
 }
 
 .social-media-section h2 {
@@ -406,10 +413,6 @@ h1.entry-title {
 	margin: 20px 0px 20px;
   padding: 10px;
 	text-align: left;
-}
-
-#github {
-  margin-bottom: 30px;
 }
 
 .social-media-section img {
@@ -424,10 +427,10 @@ h1.entry-title {
   padding: 10px;
 }
 
-.email h2 {
-  font-family: Handlee;
-  color: #398eb5;
-}
+// .email h2 {
+//   font-family: Handlee;
+//   color: #398eb5;
+// }
 
 #footer-widgets {
   background-attachment: scroll;

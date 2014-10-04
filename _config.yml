@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://ambertunnell.github.io
-title: amber_tunnell = Rubyist.new
+title: amber tunnell 
 subtitle: puts 'my thoughts on the magic that is code'
 author: Amber Tunnell
 simple_search: http://google.com/search
-description: A Flatiron Student's blog on life, love, and code.
+description: Amber Tunnell's blog on life, love, and code.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
