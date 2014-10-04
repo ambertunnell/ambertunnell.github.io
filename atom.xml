@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[amber_tunnell = Rubyist.new]]></title>
+  <title><![CDATA[amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-08-23T18:29:03-04:00</updated>
+  <updated>2014-10-04T18:42:18-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -109,7 +109,7 @@
     <link href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/"/>
     <updated>2014-08-20T21:37:50-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby</id>
-    <content type="html"><![CDATA[<p><em>Sorting algorithms are rarely discussed in Ruby. Most sorting algorithm problems can be solved quite easily by using built-in Ruby methods. That being said, some people (especially interviewers) feel that it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on sorting algorithms in Ruby!</em></p>
+    <content type="html"><![CDATA[<p><em>Sorting algorithms are rarely discussed in Ruby. Most sorting algorithm problems can be solved quite easily by using built-in Ruby methods. That being said, some people feel that it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on sorting algorithms in Ruby!</em></p>
 
 <p>We&rsquo;ll start with Bubble Sort.</p>
 
