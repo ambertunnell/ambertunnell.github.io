@@ -103,7 +103,9 @@ disqus_short_name: ambertunnelloctoblog
 disqus_show_comment_count: true 
 
 # Google Analytics
-google_analytics_tracking_id: 53821540
+google_analytics_tracking_id: UA-53821540-1
 
 # Facebook Like
 facebook_like: true 
+
+
