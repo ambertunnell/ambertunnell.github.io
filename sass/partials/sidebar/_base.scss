@@ -44,16 +44,12 @@ aside.sidebar {
     }
   }
   a {
-    color: inherit;
-    @include transition(color .5s);
+    color: #398eb5;
     text-decoration:none;
   }
   a:hover{
-  text-decoration:underline;
-  }
-  &:hover a {
-    color: #8c8c8c;
-    &:hover { color: #8c8c8c; }
+    text-decoration:none;
+    color: black !important;
   }
 }
 .aside-alt-link {
