@@ -3,7 +3,7 @@ layout: post
 title: "Sorting Algorithms Series: Bubble Sort"
 date: 2014-08-20 21:37:50 -0400
 comments: true
-categories: [sorting algorithms, computer science]
+categories: [sorting algorithms, computer science, ruby, javascript]
 ---
 
 *When I was learning Ruby, we never discussed sorting algorithms. It's my understanding that most sorting algorithm problems can be solved quite easily using built-in methods in most languages. That being said, it is important to understand the different sorting techniques available in computer science. Along those lines, here's a series of blog posts on the most common sorting algorithms!*

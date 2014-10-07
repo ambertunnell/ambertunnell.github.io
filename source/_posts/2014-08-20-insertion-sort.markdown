@@ -3,7 +3,7 @@ layout: post
 title: "Sorting Algorithms Series: Insertion Sort"
 date: 2014-08-23 16:01:26 -0400
 comments: true
-categories: [sorting algorithms, computer science]
+categories: [sorting algorithms, computer science, ruby, javascript]
 ---
 
 Like <a href="/blog/2014/08/20/bubble-sort/">Bubble Sort</a>, <strong>Insertion Sort</strong> is a simple sorting algorithm. 

@@ -3,8 +3,8 @@ layout: post
 title: "Sorting Algorithms Series: Merge Sort"
 date: 2014-10-07 14:54:35 -0400
 comments: true
-categories: [sorting algorithms, computer science]
-published: false
+categories: [sorting algorithms, computer science, ruby]
+published: true
 ---
 
 <strong>Merge Sort</strong> is a divide and conquer sorting algorithm. It is much more efficent than either <a href="/blog/2014/08/20/bubble-sort/">Bubble Sort</a> or <a href="http://localhost:4000/blog/2014/08/23/insertion-sort/">Insertion Sort</a> with an average and worst case time complexity of  O(n log n).
