@@ -6,7 +6,7 @@ comments: true
 categories: [sorting algorithms, computer science]
 ---
 
-Like Bubble Sort, Insertion Sort is a simple sorting algorithm. 
+Like <a href="/blog/2014/08/20/bubble-sort/">Bubble Sort</a>, <strong>Insertion Sort</strong> is a simple sorting algorithm. 
 
 Insertion Sort works by iterating up the current array, placing the current element into the correct place in the new sorted array.
 
