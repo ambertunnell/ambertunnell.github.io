@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-10-07T16:44:47-04:00</updated>
+  <updated>2014-10-07T16:45:33-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -354,6 +354,224 @@ Person.prototype.changeName = function(newName){</p>
 </code></p>
 
 <p>There are many intricacies I have not discussed here, but I hope this post gives you a taste of JavaScript and some of its basic concepts and quirks.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sorting Algorithms Series: Insertion Sort]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort/"/>
+    <updated>2014-08-23T16:01:26-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort</id>
+    <content type="html"><![CDATA[<p>Like <a href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/">Bubble Sort</a>, <strong>Insertion Sort</strong> is a simple sorting algorithm.</p>
+
+<p>Insertion Sort works by iterating up the current array, placing the current element into the correct place in the new sorted array.</p>
+
+<ol>
+  <li>First, take the first element of the unsorted array out of the array and put it into an empty new array.</li> 
+  <li>Take the next element out of the unsorted array and place it into the new array. If it is smaller than the first element in the new array, swap them. If not, leave it at the end.
+  <li>Take the next element out of the array and put it at the end of the new array. If it is larger than the previous end element, leave it. If not, iterate through the array until you find its correct position and insert it there.
+  <li>Continue this process until your original array is empty and you have a new completely sorted array.</li>
+</ol>
+
+
+
+
+<!-- more -->
+
+
+<p style="text-align:center;"> <img src="http://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" title="Insertion Sort" alt="insertion sort video" /></p>
+
+<p>While more efficent than Bubble Sort, Insertion Sort still has the same average and worse case time complexity of O(n<sup>2</sup>). Like Bubble Sort, it is very inefficient for large data sets, but rather efficient for small data sets or data sets already mostly sorted (the best case time complexity is O(n)).</p>
+
+<p>Implementation of Insertion Sort in Ruby.</p>
+
+<p>```ruby Insertion Sort in Ruby
+class InsertionSort</p>
+
+<p>  def initialize(array)</p>
+
+<pre><code>@array = array
+@sorted_array = []
+</code></pre>
+
+<p>  end</p>
+
+<p>  def sort</p>
+
+<pre><code>j = 0
+while @array.length &gt; 0
+  @sorted_array &lt;&lt; @array.shift
+  if @sorted_array.length &gt; 1 &amp;&amp; @sorted_array[j-1] &gt; @sorted_array[j]
+    @sorted_array.each.with_index do |n, i|
+      if @sorted_array[i] &gt; @sorted_array[-1]
+        @sorted_array[i], @sorted_array[-1] = @sorted_array[-1], @sorted_array[i]
+      end
+      if (@sorted_array[i] &lt;  @sorted_array[-1]) &amp;&amp; (@sorted_array[i+1] &gt; @sorted_array[-1])
+        @sorted_array.insert(i+1, @sorted_array[-1])
+        @sorted_array.slice!(-1)
+      end
+    end 
+  end 
+  j+=1
+end
+@sorted_array
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>print InsertionSort.new([4,1,6,3,5,2]).sort #=> [1, 2, 3, 4, 5, 6]
+```</p>
+
+<p>And in JavaScript:</p>
+
+<p>```java Insertion Sort in JavaScript
+function insertionSort(array) {</p>
+
+<pre><code>var sortedArray = [];
+
+for (var i = 0; i &lt; array.length; i++) {
+
+    sortedArray.push(array[i]);
+    var len = sortedArray.length;
+
+    if ((len &gt; 1) &amp;&amp; (sortedArray[len - 1] &lt; sortedArray[len - 2])) {
+        for (var j = 0; j &lt; len; j++) {
+            if ((len === 2) &amp;&amp; (sortedArray[j] &gt; sortedArray[len - 1])) 
+            {
+                var first = sortedArray[j];
+                var second = sortedArray[len - 1];
+
+                sortedArray[j] = second;
+                sortedArray[len - 1] = first;
+            } 
+            else if ((sortedArray[j] &lt;= sortedArray[len - 1]) 
+            &amp;&amp; (sortedArray[len - 1] &lt;= sortedArray[j + 1])) 
+            {
+                //Insert the new element where it belongs.
+                sortedArray.splice(j + 1, 0, sortedArray[len - 1]); 
+                // Delete it from the end of the array.
+                sortedArray.splice(sortedArray.length - 1, 1); 
+            }
+        }
+    }
+}
+return sortedArray;
+</code></pre>
+
+<p>}</p>
+
+<p>insertionSort([4, 1, 2, 6, 3, 5]); //=> [1, 2, 3, 4, 5, 6]
+```</p>
+
+<p><em>This is the second post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sorting Algorithms Series: Bubble Sort]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/"/>
+    <updated>2014-08-20T21:37:50-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort</id>
+    <content type="html"><![CDATA[<p><em>When I was learning Ruby, we never discussed sorting algorithms. It&rsquo;s my understanding that most sorting algorithm problems can be solved quite easily using built-in methods in most languages. That being said, it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on the most common sorting algorithms!</em></p>
+
+<p>We&rsquo;ll start with Bubble Sort.</p>
+
+<p><strong>Bubble Sort</strong> is a simple sorting algorithm.</p>
+
+<ol>
+  <li>You start by comparing the first two items in an array. If the first item is larger than the second, you swap the two items.</li> 
+  <li>Then, you compare the second and third items. If the second is larger than the third, you swap them.</li>
+  <li>Continue until you reach the end of the array.</li>
+  <li>Then, you start from the beginning again and repeat the process until you have one full pass of the array in which you did not swap any items.</li>
+  <li>You now have a sorted array!</li>
+</ol>
+
+
+
+
+<!-- more -->
+
+
+<p>The name &lsquo;bubble sort&rsquo; derives from the event of the smaller numbers slowly &lsquo;bubbling&rsquo; to the front of the array through the swapping process.</p>
+
+<p style="text-align:center;"> <img src="http://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif" title="Bubble Sort" alt="bubble sort video" /></p>
+
+<p>Here&rsquo;s the bubble sort algorithm implemented in Ruby.</p>
+
+<p>```ruby Bubble Sort in Ruby
+class BubbleSort</p>
+
+<p>  def initialize(array)</p>
+
+<pre><code>@array = array
+</code></pre>
+
+<p>  end</p>
+
+<p>  def sort</p>
+
+<pre><code>loop do 
+  i = 1
+  swap_number = 0
+   while i &lt; @array.length 
+     if @array[i-1] &gt; @array[i]
+      @array[i-1], @array[i] = @array[i], @array[i-1] 
+      swap_number += 1
+     end
+     i+=1
+   end
+  break if swap_number == 0
+end 
+return @array
+</code></pre>
+
+<p>  end</p>
+
+<p>end</p>
+
+<p>print BubbleSort.new([4,1,2,6,3,5]).sort #=> [1, 2, 3, 4, 5, 6]
+```</p>
+
+<p>And, here&rsquo;s it in JavaScript.</p>
+
+<p>```java Bubble Sort in JavaScript</p>
+
+<p>function bubbleSort(array) {</p>
+
+<pre><code>var swapNum;
+
+while (swapNum !== 0) {
+    swapNum = 0;
+    for (var i = 0; i &lt; array.length; i++) {
+        if (array[i] &gt; array[i + 1]) {
+
+            var first = array[i]; 
+            var second = array[i+1]; 
+
+            array[i] = second; 
+            array[i+1] = first;
+
+            swapNum++;
+        }
+    }
+
+}  
+return array;
+</code></pre>
+
+<p>}</p>
+
+<p>bubbleSort([4,1,2,6,3,5]); //=> [1, 2, 3, 4, 5, 6]
+```</p>
+
+<p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with an average and worst-case time complexity of О(n<sup>2</sup>).</p>
+
+<p>In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.</p>
+
+<p>That being said, bubble sort is still a very undesirable and inefficient sorting technique.</p>
+
+<p><em>This is the first post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>
 ]]></content>
   </entry>
   
