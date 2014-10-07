@@ -4,7 +4,7 @@ title: "All of the JavaScript: Basic terms and concepts for beginners"
 date: 2014-10-06 18:27:45 -0400
 comments: true
 categories: [javascript]
-published: false 
+published: true
 ---
 
 When I first started learning JavaScript, I was thrown off by some of its terminology and quirks. This post is intended to offer some guidance into the craziness of the JavaScript world for beginning JavaScripters.
