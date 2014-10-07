@@ -4,7 +4,7 @@
   <title><![CDATA[Category: computer science | amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/computer-science/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-10-07T13:23:53-04:00</updated>
+  <updated>2014-10-07T14:51:29-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -15,10 +15,12 @@
   
   <entry>
     <title type="html"><![CDATA[Sorting Algorithms Series: Insertion Sort]]></title>
-    <link href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/"/>
+    <link href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort/"/>
     <updated>2014-08-23T16:01:26-04:00</updated>
-    <id>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby</id>
-    <content type="html"><![CDATA[<p>Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the correct place in the new sorted array.</p>
+    <id>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort</id>
+    <content type="html"><![CDATA[<p>Like Bubble Sort, Insertion Sort is a simple sorting algorithm.</p>
+
+<p>Insertion Sort works by iterating up the current array, placing the current element into the correct place in the new sorted array.</p>
 
 <ol>
   <li>First, take the first element of the unsorted array out of the array and put it into an empty new array.</li> 
@@ -39,7 +41,7 @@
 
 <p>Implementation of Insertion Sort in Ruby.</p>
 
-<p>```ruby insertion sort
+<p>```ruby Insertion Sort in Ruby
 class InsertionSort</p>
 
 <p>  def initialize(array)</p>
@@ -75,6 +77,47 @@ end
 end</p>
 
 <p>print InsertionSort.new([4,1,6,3,5,2]).sort #=> [1, 2, 3, 4, 5, 6]
+```</p>
+
+<p>And in JavaScript:</p>
+
+<p>```java Insertion Sort in JavaScript
+function insertionSort(array) {</p>
+
+<pre><code>var sortedArray = [];
+
+for (var i = 0; i &lt; array.length; i++) {
+
+    sortedArray.push(array[i]);
+    var len = sortedArray.length;
+
+    if ((len &gt; 1) &amp;&amp; (sortedArray[len - 1] &lt; sortedArray[len - 2])) {
+        for (var j = 0; j &lt; len; j++) {
+            if ((len === 2) &amp;&amp; (sortedArray[j] &gt; sortedArray[len - 1])) 
+            {
+                var first = sortedArray[j];
+                var second = sortedArray[len - 1];
+
+                sortedArray[j] = second;
+                sortedArray[len - 1] = first;
+            } 
+            else if ((sortedArray[j] &lt;= sortedArray[len - 1]) 
+            &amp;&amp; (sortedArray[len - 1] &lt;= sortedArray[j + 1])) 
+            {
+                //Insert the new element where it belongs.
+                sortedArray.splice(j + 1, 0, sortedArray[len - 1]); 
+                // Delete it from the end of the array.
+                sortedArray.splice(sortedArray.length - 1, 1); 
+            }
+        }
+    }
+}
+return sortedArray;
+</code></pre>
+
+<p>}</p>
+
+<p>insertionSort([4, 1, 2, 6, 3, 5]); //=> [1, 2, 3, 4, 5, 6]
 ```</p>
 
 <p><em>This is the second post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>

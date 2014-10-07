@@ -9,7 +9,7 @@
   <meta name="author" content="Amber Tunnell">
 
   
-  <meta name="description" content="Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the &hellip;">
+  <meta name="description" content="Like Bubble Sort, Insertion Sort is a simple sorting algorithm. Insertion Sort works by iterating up the current array, placing the current element &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby">
+  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/ambertunnell" rel="alternate" title="amber tunnell" type="application/atom+xml">
@@ -111,7 +111,9 @@
   </header>
 
 
-<div class="entry-content"><p>Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the correct place in the new sorted array.</p>
+<div class="entry-content"><p>Like Bubble Sort, Insertion Sort is a simple sorting algorithm.</p>
+
+<p>Insertion Sort works by iterating up the current array, placing the current element into the correct place in the new sorted array.</p>
 
 <ol>
   <li>First, take the first element of the unsorted array out of the array and put it into an empty new array.</li> 
@@ -132,7 +134,7 @@
 
 <p>Implementation of Insertion Sort in Ruby.</p>
 
-<figure class='code'><figcaption><span>insertion sort</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Insertion Sort in Ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -193,6 +195,79 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>And in JavaScript:</p>
+
+<figure class='code'><figcaption><span>Insertion Sort in JavaScript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">function</span> <span class="nf">insertionSort</span><span class="o">(</span><span class="n">array</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">sortedArray</span> <span class="o">=</span> <span class="o">[];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="o">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">sortedArray</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</span><span class='line'>        <span class="n">var</span> <span class="n">len</span> <span class="o">=</span> <span class="n">sortedArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="o">((</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">2</span><span class="o">]))</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="n">var</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">len</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">if</span> <span class="o">((</span><span class="n">len</span> <span class="o">===</span> <span class="mi">2</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">sortedArray</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]))</span>
+</span><span class='line'>                <span class="o">{</span>
+</span><span class='line'>                    <span class="n">var</span> <span class="n">first</span> <span class="o">=</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+</span><span class='line'>                    <span class="n">var</span> <span class="n">second</span> <span class="o">=</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="n">sortedArray</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">second</span><span class="o">;</span>
+</span><span class='line'>                    <span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">first</span><span class="o">;</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>                <span class="k">else</span> <span class="nf">if</span> <span class="o">((</span><span class="n">sortedArray</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">])</span>
+</span><span class='line'>                <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]))</span>
+</span><span class='line'>                <span class="o">{</span>
+</span><span class='line'>                    <span class="c1">//Insert the new element where it belongs.</span>
+</span><span class='line'>                    <span class="n">sortedArray</span><span class="o">.</span><span class="na">splice</span><span class="o">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">sortedArray</span><span class="o">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]);</span>
+</span><span class='line'>                    <span class="c1">// Delete it from the end of the array.</span>
+</span><span class='line'>                    <span class="n">sortedArray</span><span class="o">.</span><span class="na">splice</span><span class="o">(</span><span class="n">sortedArray</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">sortedArray</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">insertionSort</span><span class="o">([</span><span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">]);</span> <span class="c1">//=&gt; [1, 2, 3, 4, 5, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p><em>This is the second post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="/blog/categories/sorting-algorithms/">here</a>.</em></p>
 </div>
 
@@ -230,7 +305,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -288,7 +363,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2014/08/23/insertion-sort-in-ruby/">Sorting Algorithms Series: Insertion Sort</a>
+        <a href="/blog/2014/08/23/insertion-sort/">Sorting Algorithms Series: Insertion Sort</a>
       </li>
     
       <li class="post">
@@ -359,8 +434,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/';
-        var disqus_url = 'http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/';
+        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/08/23/insertion-sort/';
+        var disqus_url = 'http://ambertunnell.github.io/blog/2014/08/23/insertion-sort/';
         var disqus_script = 'embed.js';
       
     (function () {
