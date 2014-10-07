@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sorting Algorithms Series: Bubble Sort - amber tunnell</title>
+  <title>Sorting Algorithms Series: Merge Sort - amber tunnell</title>
   <meta name="author" content="Amber Tunnell">
 
   
-  <meta name="description" content="When I was learning Ruby, we never discussed sorting algorithms. It&rsquo;s my understanding that most sorting algorithm problems can be solved quite &hellip;">
+  <meta name="description" content="Merge Sort is a divide and conquer sorting algorithm. It is much more efficent than either Bubble Sort or Insertion Sort with an average and worst &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort">
+  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/10/07/merge-sort">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/ambertunnell" rel="alternate" title="amber tunnell" type="application/atom+xml">
@@ -85,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sorting Algorithms Series: Bubble Sort</h1>
+      <h1 class="entry-title">Sorting Algorithms Series: Merge Sort</h1>
     
     
       <p class="meta">
@@ -101,7 +101,7 @@
   
 
 
-<time datetime="2014-08-20T21:37:50-04:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time>
+<time datetime="2014-10-07T14:54:35-04:00" pubdate data-updated="true">Oct 7<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://ambertunnell.github.io">Comments</a>
@@ -111,18 +111,15 @@
   </header>
 
 
-<div class="entry-content"><p><em>When I was learning Ruby, we never discussed sorting algorithms. It&rsquo;s my understanding that most sorting algorithm problems can be solved quite easily using built-in methods in most languages. That being said, it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on the most common sorting algorithms!</em></p>
+<div class="entry-content"><p><strong>Merge Sort</strong> is a divide and conquer sorting algorithm. It is much more efficent than either <a href="/blog/2014/08/20/bubble-sort/">Bubble Sort</a> or <a href="http://localhost:4000/blog/2014/08/23/insertion-sort/">Insertion Sort</a> with an average and worst case time complexity of  O(n log n).</p>
 
-<p>We&rsquo;ll start with Bubble Sort.</p>
-
-<p><strong>Bubble Sort</strong> is a simple sorting algorithm.</p>
+<p>In Merge Sort, you divide a list of items to be in the smallest units possible. You sort the smaller units, then repeatedly merge the small units back together until you have a sorted list.</p>
 
 <ol>
-  <li>You start by comparing the first two items in an array. If the first item is larger than the second, you swap the two items.</li> 
-  <li>Then, you compare the second and third items. If the second is larger than the third, you swap them.</li>
-  <li>Continue until you reach the end of the array.</li>
-  <li>Then, you start from the beginning again and repeat the process until you have one full pass of the array in which you did not swap any items.</li>
-  <li>You now have a sorted array!</li>
+  <li>Take an array of items. Split the array into single subunits.</li>
+  <li>Since an item with only one input is considered sorted, merge the subunits together so that you now have subunits with 2 items each.</li>
+  <li>Sort each of these 2-item subunits so that they are all ordered correctly.</li>
+  <li>Continue merging the subunits together and sorting them individually until you have a completely merged and sorted list.</li>
 </ol>
 
 
@@ -131,13 +128,11 @@
 <!-- more -->
 
 
-<p>The name &lsquo;bubble sort&rsquo; derives from the event of the smaller numbers slowly &lsquo;bubbling&rsquo; to the front of the array through the swapping process.</p>
+<p style="text-align:center;"> <img src="http://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" title="Merge Sort" alt="merge sort video" /></p>
 
-<p style="text-align:center;"> <img src="http://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif" title="Bubble Sort" alt="bubble sort video" /></p>
+<p>As discussed, Merge Sort has a very good time complexity. However, it does not have a good space complexity. Because it doesn&rsquo;t sort in place (like Bubble Sort), you need twice the space of the normal list in order to implement the sort. Despite this drawback, it is still worthwhile because of its efficiency. For example, Merge Sort&rsquo;s worst case time complexity O(n log n) is the same as Quicksort&rsquo;s <em>best case</em> time complexity.</p>
 
-<p>Here&rsquo;s the bubble sort algorithm implemented in Ruby.</p>
-
-<figure class='code'><figcaption><span>Bubble Sort in Ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Merge Sort in Ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -162,92 +157,53 @@
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">BubbleSort</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MergeSort</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@array</span> <span class="o">=</span> <span class="n">array</span>
-</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">array</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">array</span>
+</span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">sort</span>
-</span><span class='line'>    <span class="kp">loop</span> <span class="k">do</span>
-</span><span class='line'>      <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'>      <span class="n">swap_number</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>       <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="vi">@array</span><span class="o">.</span><span class="n">length</span>
-</span><span class='line'>         <span class="k">if</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>          <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'>          <span class="n">swap_number</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>         <span class="k">end</span>
-</span><span class='line'>         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-</span><span class='line'>       <span class="k">end</span>
-</span><span class='line'>      <span class="k">break</span> <span class="k">if</span> <span class="n">swap_number</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="n">middle</span> <span class="o">=</span> <span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
+</span><span class='line'>        <span class="n">length</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">first_array</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">middle</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">second_array</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">middle</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">length</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">first_sorted_array</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">first_array</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">second_sorted_array</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">second_array</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">first_sorted_array</span><span class="p">,</span> <span class="n">second_sorted_array</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">return</span> <span class="vi">@array</span>
-</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">first_array</span><span class="p">,</span> <span class="n">second_array</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">second_array</span> <span class="k">if</span> <span class="n">first_array</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">first_array</span> <span class="k">if</span> <span class="n">second_array</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">first_array</span><span class="o">.</span><span class="n">first</span> <span class="o">&lt;=</span> <span class="n">second_array</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>            <span class="n">unit</span> <span class="o">=</span> <span class="n">first_array</span><span class="o">.</span><span class="n">shift</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>            <span class="n">unit</span> <span class="o">=</span> <span class="n">second_array</span><span class="o">.</span><span class="n">shift</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="o">[</span><span class="n">unit</span><span class="o">]</span> <span class="o">+</span> <span class="n">merge</span><span class="p">(</span><span class="n">first_array</span><span class="p">,</span> <span class="n">second_array</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">print</span> <span class="no">BubbleSort</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6]</span>
+</span><span class='line'><span class="nb">print</span> <span class="no">MergeSort</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="o">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>And, here&rsquo;s it in JavaScript.</p>
-
-<figure class='code'><figcaption><span>Bubble Sort in JavaScript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">function</span> <span class="nf">bubbleSort</span><span class="o">(</span><span class="n">array</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">var</span> <span class="n">swapNum</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">while</span> <span class="o">(</span><span class="n">swapNum</span> <span class="o">!==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">swapNum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="n">var</span> <span class="n">first</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-</span><span class='line'>                <span class="n">var</span> <span class="n">second</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">second</span><span class="o">;</span>
-</span><span class='line'>                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">first</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="n">swapNum</span><span class="o">++;</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">array</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">bubbleSort</span><span class="o">([</span><span class="mi">4</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">]);</span> <span class="c1">//=&gt; [1, 2, 3, 4, 5, 6]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with an average and worst-case time complexity of О(n<sup>2</sup>).</p>
-
-<p>In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.</p>
-
-<p>That being said, bubble sort is still a very undesirable and inefficient sorting technique.</p>
-
-<p><em>This is the first post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="/blog/categories/sorting-algorithms/">here</a>.</em></p>
+<p><em>This is the third post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="/blog/categories/sorting-algorithms/">here</a>.</em></p>
 </div>
 
 
@@ -270,7 +226,7 @@
   
 
 
-<time datetime="2014-08-20T21:37:50-04:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time>
+<time datetime="2014-10-07T14:54:35-04:00" pubdate data-updated="true">Oct 7<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -284,7 +240,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/10/07/merge-sort/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/10/07/merge-sort/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -309,10 +265,8 @@
     </p>
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/07/18/writing-beautiful-code-with-haml/" title="Previous Post: Writing beautiful code with haml">&laquo; Writing beautiful code with haml</a>
+        <a class="basic-alignment left" href="/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/" title="Previous Post: All of the JavaScript: Basic terms and concepts for beginners">&laquo; All of the JavaScript: Basic terms and concepts for beginners</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/23/insertion-sort/" title="Next Post: Sorting Algorithms Series: Insertion Sort">Sorting Algorithms Series: Insertion Sort &raquo;</a>
       
     </p>
   </footer>
@@ -413,8 +367,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/';
-        var disqus_url = 'http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/';
+        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/10/07/merge-sort/';
+        var disqus_url = 'http://ambertunnell.github.io/blog/2014/10/07/merge-sort/';
         var disqus_script = 'embed.js';
       
     (function () {
