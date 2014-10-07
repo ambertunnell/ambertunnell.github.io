@@ -3,7 +3,7 @@ layout: post
 title: "Bubble Sort in Ruby"
 date: 2014-08-20 21:37:50 -0400
 comments: true
-categories: [sorting algorithms, ruby, computer science]
+categories: [sorting algorithms, computer science]
 ---
 
 *Sorting algorithms are rarely discussed in Ruby. Most sorting algorithm problems can be solved quite easily by using built-in Ruby methods. That being said, some people feel that it is important to understand the different sorting techniques available in computer science. Along those lines, here's a series of blog posts on sorting algorithms in Ruby!*

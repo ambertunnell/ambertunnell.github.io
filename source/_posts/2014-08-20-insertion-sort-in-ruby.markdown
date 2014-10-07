@@ -3,7 +3,7 @@ layout: post
 title: "Insertion Sort in Ruby"
 date: 2014-08-23 16:01:26 -0400
 comments: true
-categories: [sorting algorithms, ruby, computer science]
+categories: [sorting algorithms, computer science]
 ---
 
 Insertion sort is another simple sorting algorithm. It creates a new array and iterates up the current array, placing the current element into the correct place in the new sorted array.

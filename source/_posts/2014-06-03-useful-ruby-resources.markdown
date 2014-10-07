@@ -3,7 +3,7 @@ layout: post
 title: "Useful Ruby resources"
 date: 2014-06-03 22:17:00 -0400
 comments: true
-categories: [ruby, resources] 
+categories: [ruby] 
 ---
 
 After being at <i>The Flatiron School</i> for two weeks, I've come to realize that it's all in the resources. Every task can be done quicker, smarter, and better with the right resources. Considering that, here's an on-going list of awesome resources for the beginning Rubyist that I've learned about so far. If you know of other great resources not yet included, mention them in the comments! <!-- more -->
