@@ -5,14 +5,15 @@ html {
 	background: #FFFFFF;
 }
 
+
 body {
 	font-family: 'Helvetica Neue-Light', sans-serif;
 	font-size: 20px;
 	font-weight: 200;
 	color: #333;
 	max-width: 1200px;
-	padding-left: 5em;
-	padding-right: 5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	
 	h1, h2, h3, h4, h5 {
 		font-family: 'Helvetica Neue', sans-serif;
@@ -440,4 +441,12 @@ h1.entry-title {
   border-top-style: solid;
   border-top-width: 1px;
   padding: 20px;
+}
+
+
+@media (min-width: 900px) {
+  body {
+    padding-left: 5em;
+    padding-right: 5em;
+  }
 }
