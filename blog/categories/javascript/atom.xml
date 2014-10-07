@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: javascript | amber tunnell]]></title>
+  <link href="http://ambertunnell.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://ambertunnell.github.io/"/>
+  <updated>2014-10-07T12:11:32-04:00</updated>
+  <id>http://ambertunnell.github.io/</id>
+  <author>
+    <name><![CDATA[Amber Tunnell]]></name>
+    <email><![CDATA[amber.tunnell@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[All of the JavaScript: Basic terms and concepts for beginners]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/"/>
+    <updated>2014-10-06T18:27:45-04:00</updated>
+    <id>http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners</id>
+    <content type="html"><![CDATA[<p>When I first started learning JavaScript, I was thrown off by some of its terminology and quirks. This post is intended to offer some guidance into the craziness of the JavaScript world for beginning JavaScripters.</p>
+
+<p>JavaScript is a dynamically-typed, object-oriented programming language that is usually used on the client side in web browsers.</p>
+
+<p>Functions are central to one&rsquo;s undertanding of JavaScript, so let&rsquo;s start with the difference between function declarations and function expressions.</p>
+
+<!-- more -->
+
+
+<h2>Function Declarations vs. Function Expressions</h2>
+
+<p>A <strong>function declaration</strong>, or function statement, is when you define a function without a variable assignment. A <strong>function expression</strong> is when you define a function and set the result of that function equal to a varialbe.</p>
+
+<p>```java functions
+ //Function Declaration</p>
+
+<pre><code>//Named function
+function foo(){
+  return "hello";
+} 
+
+foo() //=&gt; "hello"
+</code></pre>
+
+<p>  // Function Expressions</p>
+
+<pre><code>// Anonymous Function:
+var a = function(){
+  return "hello";
+}
+
+a() //=&gt; "hello"
+
+// Named Function:
+var a = function foo(){
+  return "hello";
+}
+
+foo() //=&gt; "hello"
+a() //=&gt; "hello"
+</code></pre>
+
+<p>```</p>
+
+<h2>Scoping</h2>
+
+<p>In JavaScript, you have <strong>global scope</strong> and <strong>local scope</strong>. If a variable is defined outside of any function, it is considering to be a global variable, which can be accessed by any function. It is scoped to the entire document.</p>
+
+<p>If the variable is defined inside of a function, that variable is scoped to that function and is only accessible to that function.</p>
+
+<p>```java Scope</p>
+
+<p>  var a = 0; // This is a global variable.</p>
+
+<p>  function foo(){</p>
+
+<pre><code>var b = 1; // This is a local variable.
+</code></pre>
+
+<p>  }</p>
+
+<p>  // If you try to call a and b outside of any function, you get:</p>
+
+<p>  a //=> 0
+  b //=> &ldquo;b is undefined&rdquo;
+```</p>
+
+<h2>Hoisting</h2>
+
+<p>One unique quirk in JavaScript is variable and function hoisting. Function   declarations and function variables are always moved to the top of their scope by the interpreter.</p>
+
+<p>Since all variables defined in a function are scoped to the function level, any variables declared throughout the function are initialized as <code>undefined</code> at the beginning of the function. They are given a value when it reaches the variable assignment. Forward referencing is not possible for variables because <strong>the assignment itself isn&rsquo;t hoisted, just the initialization is</strong>.</p>
+
+<p>However, forward referencing for function declarations is possible because placement is irrelevant for simple function declarations. All function declarations are automatically moved to the top of the function.</p>
+
+<p>Let&rsquo;s look at some examples.</p>
+
+<p>```java Function Hoisting</p>
+
+<p>function foo(){</p>
+
+<pre><code>function bar() {
+    return "hi";
+}
+return bar();
+function bar() {
+    return "bye";
+}
+</code></pre>
+
+<p>}</p>
+
+<p>foo() //=> &ldquo;bye&rdquo;</p>
+
+<p>/<em> Even though the second bar function declaration is below the
+return statement, the interpreter actually sees it above the return
+because it hoists all the function declarations to the top: </em>/</p>
+
+<p>function foo(){</p>
+
+<pre><code>function bar() {
+    return "hi";
+}
+function bar() {
+    return "bye";
+} // redefines bar
+return bar();
+</code></pre>
+
+<p>}
+```</p>
+
+<p>```java Variable Hoisting</p>
+
+<p>function foo(){</p>
+
+<pre><code>var a = "hi";
+return a;
+var a = "bye";
+</code></pre>
+
+<p>}
+foo() //=> &ldquo;hi&rdquo;</p>
+
+<p>function foo(){</p>
+
+<pre><code>return a;
+var a = "hi";
+var a = "bye";
+</code></pre>
+
+<p>}
+foo() //=> &ldquo;undefined&rdquo;</p>
+
+<p>// These are read like this:</p>
+
+<p>function foo(){</p>
+
+<pre><code>var a = "undefined"; // Variable in function initialized.
+var a = "hi"; // Variable assigned value.
+return a; // Current assignment "hi" returned.
+var a = "bye"; // Variable assignment redefined.  
+</code></pre>
+
+<p>}</p>
+
+<p>function foo(){</p>
+
+<pre><code>var a = "undefined"; // Variable in function initialized.
+return a; // Current assignment "undefined" returned.
+var a = "hi"; // Variable assignment.
+var a = "bye"; // Variable assignment redefined.
+</code></pre>
+
+<p>}</p>
+
+<p>/<em> Further, if you simply redefine a variable inside a function,
+that variable is a global variable which is initialized as undefined
+in the document, like so: </em>/</p>
+
+<p>  function foo(){</p>
+
+<pre><code>b = 1;
+</code></pre>
+
+<p>  }</p>
+
+<p>  // is read as =></p>
+
+<p>  var b = &ldquo;undefined&rdquo;; // Variable initialized.</p>
+
+<p>  function foo(){</p>
+
+<pre><code>b = 1; // Variable reassigned.
+</code></pre>
+
+<p>  }</p>
+
+<p>/<em> So it&rsquo;s important to inlclude <code>var</code> if you desire to limit
+the scope to the current function. </em>/
+```</p>
+
+<p>To prevent variable hoising, you can use <strong>self-executing anonymous functions</strong>, also known as <strong>immediately-invoked function expressions (IIFEs)</strong>.</p>
+
+<p>```java IIFEs
+// Normal function:</p>
+
+<p>var a = &ldquo;hi&rdquo;;</p>
+
+<p>var word = function(){
+  return a;
+};</p>
+
+<p>var a = &ldquo;bye&rdquo;;</p>
+
+<p>word() //=> &ldquo;bye&rdquo;</p>
+
+<p>// IIFE:</p>
+
+<p>var a = &ldquo;hi&rdquo;;</p>
+
+<p>var word = (function(){
+  return a;
+}(a));</p>
+
+<p>var a = &ldquo;bye&rdquo;;</p>
+
+<p>word //=> &ldquo;hi&rdquo;</p>
+
+<p>```</p>
+
+<p>As you can see, IIFEs preserve the context of the origin function expression placement by passing the current state of the variable to the function.</p>
+
+<h2>Object-Orientation</h2>
+
+<p>Coming from Ruby, I had a good understanding of OOP before learning JS. However, object-oriented programming in JavaScript is a bit different.</p>
+
+<p>You can create an object literal using a basic hash:</p>
+
+<p><code>java Object with literal notation
+var Amber = {name: "Amber", favoriteLanguage: "JavaScript"};
+</code></p>
+
+<p>If you only need to ever use the object once, this technique is fine. But if you want to create multiple instances of it, you should use <strong>constructor functions</strong>. It is important to understand that <strong>all functions are objects in JavaScript</strong>. They all encapsulate a bit of reusable code.</p>
+
+<p>In most languages, including Ruby, these functions are called classes, but in JavaScript you have constructor functions.</p>
+
+<p>```java Object with constructor</p>
+
+<p>// Constructor Function
+function Person (name, favoriteLanguage) {}</p>
+
+<p>// Particular instance of constructor function instantiated.
+var Amber = new Person(&ldquo;Amber&rdquo;, &ldquo;JavaScript&rdquo;);
+```</p>
+
+<p>Now <code>Amber</code> is an object created from the <code>Person</code> object. The biggest advantage to using a constructor function over the basic hash above is that you can now reuse the Person function over and over again. You can give the Person function properties and methods, and those will be copied over to every instance of that object.</p>
+
+<p>The constructor function can now have properties:</p>
+
+<p>```java Object with constructor and properties
+// Constructor Function
+function Person (name, favoriteLanguage) {
+  this.name = name;
+  this.favoriteLanguage = favoriteLanguage;
+  this.changeName = function(newName){</p>
+
+<pre><code>this.name = newName;
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>// Particular instance of constructor function instantiated.
+var Amber = new Person(&ldquo;Amber&rdquo;, &ldquo;JavaScript&rdquo;);
+Amber.name //=> &ldquo;Amber&rdquo;
+Amber.changeName(&ldquo;Bethany&rdquo;) //=> Amber.name => &ldquo;Bethany&rdquo;
+```</p>
+
+<p>If you have a group of methods that you want every instance of the constructor function to inherit, you can also encapsulate those methods in a <strong>prototype</strong>.</p>
+
+<p>```java Object with constructor and prototype
+// Constructor Function
+function Person (name, favoriteLanguage) {
+  this.name = name;
+  this.favoriteLanguage = favoriteLanguage;
+}</p>
+
+<p>// Prototype
+Person.prototype = {
+  constructor: Person,
+  changeName: function(newName){</p>
+
+<pre><code>this.name = newName;
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>//OR</p>
+
+<p>Person.prototype.constructor = Person;
+Person.prototype.changeName = function(newName){</p>
+
+<pre><code>this.name = newName;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>When you add functions to a prototype, they are only created once. And then everytime an instance calls one of those methods, the instance refers to the one created in the prototype.</p>
+
+<p>If you add functions to the constructor, they are duplicated every time you create a new instance of the constructor when is less efficient and consumes more memory.</p>
+
+<p>However, one plus to creating methods inside the constructor function is that those functions have access to private data (i.e. they are <em>privileged</em>), whereas functions in prototypes are not.</p>
+
+<h2>Call vs Apply</h2>
+
+<p>If you would like to scope a function to an object, you can use the methods <code>call</code> and <code>apply</code>. For example, if you take the <code>changeName</code> function outside of the prototype in the sample above.</p>
+
+<p>```java The Call Method</p>
+
+<p>  function Person (name) {</p>
+
+<pre><code>this.name = name;
+</code></pre>
+
+<p>  }
+  var Amber = new Person(&ldquo;Amber&rdquo;);</p>
+
+<p>   var changeName = function(newName){</p>
+
+<pre><code>  this.name = newName;
+}
+</code></pre>
+
+<p>  /<em> Calling changeName() here will result in &lsquo;undefined&rsquo;
+  because it doesn&rsquo;t know the scope of this.
+  You can bind a scope to a function with the call method. </em>/</p>
+
+<p>  // changeName.call(scope, arguments)</p>
+
+<p>  changeName.call(Amber, &ldquo;Bethany&rdquo;);
+  Amber.name //=> &ldquo;Bethany&rdquo;</p>
+
+<p>  /<em> This binds the function to the Amber object
+  and passes it the argument &ldquo;Bethany&rdquo;. </em>/</p>
+
+<p><code>``
+</code>apply<code>is very similar to</code>call`, except you pass it arguments as an array and it can take an unknown amount of arguments.</p>
+
+<p><code>java The Apply Method
+  changeName.apply(Amber, ["Bethany"])
+</code></p>
+
+<p>There are many intricacies I have not discussed here, but I hope this post gives you a taste of JavaScript and some of its basic concepts and quirks.</p>
+]]></content>
+  </entry>
+  
+</feed>

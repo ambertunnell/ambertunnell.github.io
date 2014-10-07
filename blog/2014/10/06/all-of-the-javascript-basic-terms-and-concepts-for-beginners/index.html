@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>All of the JavaScript: Basic terms and concepts for beginners - amber tunnell</title>
+  <meta name="author" content="Amber Tunnell">
+
+  
+  <meta name="description" content="When I first started learning JavaScript, I was thrown off by some of its terminology and quirks. This post is intended to offer some guidance into &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/ambertunnell" rel="alternate" title="amber tunnell" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53821540-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<!-- <body    class="collapse-sidebar sidebar-footer" > -->
+
+<body>
+  <header role="banner">
+	<div class="header-title"><a href="/">amber tunnell</a></div>
+
+
+	<br><div class="header-subtitle">puts 'my thoughts on the magic that is code'</div>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/ambertunnell" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ambertunnell.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">@blog</a></li>
+  <li><a href="/blog/archives">@archives</a></li>
+  <li><a href="/blog/about">@about</a></li>
+  <li><a href="/blog/projects">@projects</a></li>
+</ul>
+
+</nav>
+    <div id="main">
+      <div id="content">
+    <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">All of the JavaScript: Basic terms and concepts for beginners</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-06T18:27:45-04:00" pubdate data-updated="true">Oct 6<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://ambertunnell.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>When I first started learning JavaScript, I was thrown off by some of its terminology and quirks. This post is intended to offer some guidance into the craziness of the JavaScript world for beginning JavaScripters.</p>
+
+<p>JavaScript is a dynamically-typed, object-oriented programming language that is usually used on the client side in web browsers.</p>
+
+<p>Functions are central to one&rsquo;s undertanding of JavaScript, so let&rsquo;s start with the difference between function declarations and function expressions.</p>
+
+<!-- more -->
+
+
+<h2>Function Declarations vs. Function Expressions</h2>
+
+<p>A <strong>function declaration</strong>, or function statement, is when you define a function without a variable assignment. A <strong>function expression</strong> is when you define a function and set the result of that function equal to a varialbe.</p>
+
+<figure class='code'><figcaption><span>functions</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="c1">//Function Declaration</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Named function</span>
+</span><span class='line'>    <span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s">&quot;hello&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">foo</span><span class="o">()</span> <span class="c1">//=&gt; &quot;hello&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Function Expressions</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Anonymous Function:</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">function</span><span class="o">(){</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s">&quot;hello&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">a</span><span class="o">()</span> <span class="c1">//=&gt; &quot;hello&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Named Function:</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">function</span> <span class="n">foo</span><span class="o">(){</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s">&quot;hello&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">foo</span><span class="o">()</span> <span class="c1">//=&gt; &quot;hello&quot;</span>
+</span><span class='line'>    <span class="n">a</span><span class="o">()</span> <span class="c1">//=&gt; &quot;hello&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Scoping</h2>
+
+<p>In JavaScript, you have <strong>global scope</strong> and <strong>local scope</strong>. If a variable is defined outside of any function, it is considering to be a global variable, which can be accessed by any function. It is scoped to the entire document.</p>
+
+<p>If the variable is defined inside of a function, that variable is scoped to that function and is only accessible to that function.</p>
+
+<figure class='code'><figcaption><span>Scope</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// This is a global variable.</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// This is a local variable.</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// If you try to call a and b outside of any function, you get:</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span> <span class="c1">//=&gt; 0</span>
+</span><span class='line'>  <span class="n">b</span> <span class="c1">//=&gt; &quot;b is undefined&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Hoisting</h2>
+
+<p>One unique quirk in JavaScript is variable and function hoisting. Function   declarations and function variables are always moved to the top of their scope by the interpreter.</p>
+
+<p>Since all variables defined in a function are scoped to the function level, any variables declared throughout the function are initialized as <code>undefined</code> at the beginning of the function. They are given a value when it reaches the variable assignment. Forward referencing is not possible for variables because <strong>the assignment itself isn&rsquo;t hoisted, just the initialization is</strong>.</p>
+
+<p>However, forward referencing for function declarations is possible because placement is irrelevant for simple function declarations. All function declarations are automatically moved to the top of the function.</p>
+
+<p>Let&rsquo;s look at some examples.</p>
+
+<figure class='code'><figcaption><span>Function Hoisting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">function</span> <span class="nf">bar</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nf">bar</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">function</span> <span class="nf">bar</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">foo</span><span class="o">()</span> <span class="c1">//=&gt; &quot;bye&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* Even though the second bar function declaration is below the </span>
+</span><span class='line'><span class="cm">return statement, the interpreter actually sees it above the return </span>
+</span><span class='line'><span class="cm">because it hoists all the function declarations to the top: */</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">function</span> <span class="nf">bar</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="n">function</span> <span class="nf">bar</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span> <span class="c1">// redefines bar</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nf">bar</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Variable Hoisting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">foo</span><span class="o">()</span> <span class="c1">//=&gt; &quot;hi&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">foo</span><span class="o">()</span> <span class="c1">//=&gt; &quot;undefined&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// These are read like this:</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;undefined&quot;</span><span class="o">;</span> <span class="c1">// Variable in function initialized.</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span> <span class="c1">// Variable assigned value.</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span> <span class="c1">// Current assignment &quot;hi&quot; returned.</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span> <span class="c1">// Variable assignment redefined.  </span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;undefined&quot;</span><span class="o">;</span> <span class="c1">// Variable in function initialized.</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span> <span class="c1">// Current assignment &quot;undefined&quot; returned.</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span> <span class="c1">// Variable assignment.</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span> <span class="c1">// Variable assignment redefined.</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* Further, if you simply redefine a variable inside a function,</span>
+</span><span class='line'><span class="cm">that variable is a global variable which is initialized as undefined</span>
+</span><span class='line'><span class="cm">in the document, like so: */</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// is read as =&gt; </span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="s">&quot;undefined&quot;</span><span class="o">;</span> <span class="c1">// Variable initialized.</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">function</span> <span class="nf">foo</span><span class="o">(){</span>
+</span><span class='line'>    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// Variable reassigned.</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* So it&#39;s important to inlclude `var` if you desire to limit </span>
+</span><span class='line'><span class="cm">the scope to the current function. */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To prevent variable hoising, you can use <strong>self-executing anonymous functions</strong>, also known as <strong>immediately-invoked function expressions (IIFEs)</strong>.</p>
+
+<figure class='code'><figcaption><span>IIFEs</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// Normal function:</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">word</span> <span class="o">=</span> <span class="n">function</span><span class="o">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'><span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">word</span><span class="o">()</span> <span class="c1">//=&gt; &quot;bye&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// IIFE: </span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hi&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">word</span> <span class="o">=</span> <span class="o">(</span><span class="n">function</span><span class="o">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'><span class="o">}(</span><span class="n">a</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;bye&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">word</span> <span class="c1">//=&gt; &quot;hi&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see, IIFEs preserve the context of the origin function expression placement by passing the current state of the variable to the function.</p>
+
+<h2>Object-Orientation</h2>
+
+<p>Coming from Ruby, I had a good understanding of OOP before learning JS. However, object-oriented programming in JavaScript is a bit different.</p>
+
+<p>You can create an object literal using a basic hash:</p>
+
+<figure class='code'><figcaption><span>Object with literal notation </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">var</span> <span class="n">Amber</span> <span class="o">=</span> <span class="o">{</span><span class="nl">name:</span> <span class="s">&quot;Amber&quot;</span><span class="o">,</span> <span class="nl">favoriteLanguage:</span> <span class="s">&quot;JavaScript&quot;</span><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you only need to ever use the object once, this technique is fine. But if you want to create multiple instances of it, you should use <strong>constructor functions</strong>. It is important to understand that <strong>all functions are objects in JavaScript</strong>. They all encapsulate a bit of reusable code.</p>
+
+<p>In most languages, including Ruby, these functions are called classes, but in JavaScript you have constructor functions.</p>
+
+<figure class='code'><figcaption><span>Object with constructor</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// Constructor Function</span>
+</span><span class='line'><span class="n">function</span> <span class="nf">Person</span> <span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">favoriteLanguage</span><span class="o">)</span> <span class="o">{}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Particular instance of constructor function instantiated. </span>
+</span><span class='line'><span class="n">var</span> <span class="n">Amber</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Amber&quot;</span><span class="o">,</span> <span class="s">&quot;JavaScript&quot;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now <code>Amber</code> is an object created from the <code>Person</code> object. The biggest advantage to using a constructor function over the basic hash above is that you can now reuse the Person function over and over again. You can give the Person function properties and methods, and those will be copied over to every instance of that object.</p>
+
+<p>The constructor function can now have properties:</p>
+
+<figure class='code'><figcaption><span>Object with constructor and properties </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// Constructor Function</span>
+</span><span class='line'><span class="n">function</span> <span class="nf">Person</span> <span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">favoriteLanguage</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">favoriteLanguage</span> <span class="o">=</span> <span class="n">favoriteLanguage</span><span class="o">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">changeName</span> <span class="o">=</span> <span class="n">function</span><span class="o">(</span><span class="n">newName</span><span class="o">){</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Particular instance of constructor function instantiated. </span>
+</span><span class='line'><span class="n">var</span> <span class="n">Amber</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Amber&quot;</span><span class="o">,</span> <span class="s">&quot;JavaScript&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="n">Amber</span><span class="o">.</span><span class="na">name</span> <span class="c1">//=&gt; &quot;Amber&quot;</span>
+</span><span class='line'><span class="n">Amber</span><span class="o">.</span><span class="na">changeName</span><span class="o">(</span><span class="s">&quot;Bethany&quot;</span><span class="o">)</span> <span class="c1">//=&gt; Amber.name =&gt; &quot;Bethany&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you have a group of methods that you want every instance of the constructor function to inherit, you can also encapsulate those methods in a <strong>prototype</strong>.</p>
+
+<figure class='code'><figcaption><span>Object with constructor and prototype</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// Constructor Function</span>
+</span><span class='line'><span class="n">function</span> <span class="nf">Person</span> <span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">favoriteLanguage</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">favoriteLanguage</span> <span class="o">=</span> <span class="n">favoriteLanguage</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Prototype </span>
+</span><span class='line'><span class="n">Person</span><span class="o">.</span><span class="na">prototype</span> <span class="o">=</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nl">constructor:</span> <span class="n">Person</span><span class="o">,</span>
+</span><span class='line'>  <span class="nl">changeName:</span> <span class="n">function</span><span class="o">(</span><span class="n">newName</span><span class="o">){</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//OR </span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Person</span><span class="o">.</span><span class="na">prototype</span><span class="o">.</span><span class="na">constructor</span> <span class="o">=</span> <span class="n">Person</span><span class="o">;</span>
+</span><span class='line'><span class="n">Person</span><span class="o">.</span><span class="na">prototype</span><span class="o">.</span><span class="na">changeName</span> <span class="o">=</span> <span class="n">function</span><span class="o">(</span><span class="n">newName</span><span class="o">){</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>When you add functions to a prototype, they are only created once. And then everytime an instance calls one of those methods, the instance refers to the one created in the prototype.</p>
+
+<p>If you add functions to the constructor, they are duplicated every time you create a new instance of the constructor when is less efficient and consumes more memory.</p>
+
+<p>However, one plus to creating methods inside the constructor function is that those functions have access to private data (i.e. they are <em>privileged</em>), whereas functions in prototypes are not.</p>
+
+<h2>Call vs Apply</h2>
+
+<p>If you would like to scope a function to an object, you can use the methods <code>call</code> and <code>apply</code>. For example, if you take the <code>changeName</code> function outside of the prototype in the sample above.</p>
+
+<figure class='code'><figcaption><span>The Call Method</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="n">function</span> <span class="nf">Person</span> <span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="n">var</span> <span class="n">Amber</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Amber&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="n">var</span> <span class="n">changeName</span> <span class="o">=</span> <span class="n">function</span><span class="o">(</span><span class="n">newName</span><span class="o">){</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* Calling changeName() here will result in &#39;undefined&#39; </span>
+</span><span class='line'><span class="cm">  because it doesn&#39;t know the scope of this. </span>
+</span><span class='line'><span class="cm">  You can bind a scope to a function with the call method. */</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// changeName.call(scope, arguments)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">changeName</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="n">Amber</span><span class="o">,</span> <span class="s">&quot;Bethany&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">Amber</span><span class="o">.</span><span class="na">name</span> <span class="c1">//=&gt; &quot;Bethany&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* This binds the function to the Amber object </span>
+</span><span class='line'><span class="cm">  and passes it the argument &quot;Bethany&quot;. */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>apply</code> is very similar to <code>call</code>, except you pass it arguments as an array and it can take an unknown amount of arguments.</p>
+
+<figure class='code'><figcaption><span>The Apply Method</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="n">changeName</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">Amber</span><span class="o">,</span> <span class="o">[</span><span class="s">&quot;Bethany&quot;</span><span class="o">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are many intricacies I have not discussed here, but I hope this post gives you a taste of JavaScript and some of its basic concepts and quirks.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Amber Tunnell</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-06T18:27:45-04:00" pubdate data-updated="true">Oct 6<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/" data-via="ambertunnell" data-counturl="http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      <div class="about">
+<!--      <span class="about-image">
+          <img src="/images/author.jpg" alt="author name">
+     </span> -->
+     <span class="about-desc">
+          <span>Amber is a web developer in New York who believes in creating beautiful, interactive stories through code. She is a lover of good coffee, good books, and good code.</span>
+          <br>
+          <a href="https://twitter.com/ambertunnell" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @ambertunnell</a>
+     </span>
+</div>
+    </p>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/23/insertion-sort-in-ruby/" title="Previous Post: Insertion Sort in Ruby">&laquo; Insertion Sort in Ruby</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>about</h1>
+  <center><img style="width: 50%; border-radius: 200px; margin:5px" src="/images/ambertunnell.jpg"></center>
+  <p style="margin-bottom: 5px; display:inline;">Full stack web developer in New York City. </p><a href="/blog/about" style="display:inline;"> More.</a>
+</section>
+<section>
+  <h1>recent posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/">All of the JavaScript: Basic terms and concepts for beginners</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/23/insertion-sort-in-ruby/">Insertion Sort in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/20/bubble-sort-in-ruby/">Bubble Sort in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/18/writing-beautiful-code-with-haml/">Writing beautiful code with haml</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/29/analyzing-instance-variables-in-ruby/">Analyzing instance variables in Ruby</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/computer-science/'>computer science (2)</a></li>
+<li class='category'><a href='/blog/categories/haml/'>haml (1)</a></li>
+<li class='category'><a href='/blog/categories/instance-variables/'>instance variables (1)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>javascript (1)</a></li>
+<li class='category'><a href='/blog/categories/resources/'>resources (1)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
+<li class='category'><a href='/blog/categories/self/'>self (1)</a></li>
+<li class='category'><a href='/blog/categories/sorting-algorithms/'>sorting algorithms (2)</a></li>
+
+  </ul>
+</section><section>
+<h1>found on</h1>
+
+  <div class="social-media-section">
+      <a href="https://github.com/ambertunnell" class="social-media-icon github" rel="tooltip" title="Github" target="_blank"><i class="social_media fa fa-github fa-2x"></i></A>
+      <a href="http://stackoverflow.com/users/3826943/amber-tunnell" class="social-media-icon stackoverflow" rel="tooltip" title="Stack Overflow" target="_blank"><i class=" social_media fa fa-stack-overflow fa-2x"></i></A>
+      <a href="https://careers.stackoverflow.com/ambertunnell" class="social-media-icon" class="social-media-icon" rel="tooltip" title="Stack Overflow Careers" target="_blank"><i class="social_media fa fa-stack-exchange fa-2x"></i></A>
+      <a href="https://linkedin.com/in/ambertunnell/" class="linkedin" class="social-media-icon" rel="tooltip" title="Linkedin" target="_blank"><i class="social_media fa fa-linkedin fa-2x"></i></A>
+      <a href="https://twitter.com/ambertunnell" class="twitter" class="social-media-icon" rel="tooltip" title="Twitter" target="_blank"><i class="social_media fa fa-twitter fa-2x"></i></A>
+      <a href="https://www.behance.net/ambertunnell" class="social-media-icon" rel="tooltip" title="Behance" target="_blank"><i class="social_media fa fa-behance fa-2x"></i></A>
+      <a href="http://combustingstar.deviantart.com/" class="social-media-icon" rel="tooltip" title="Deviantart" target="_blank"><i class="social_media fa fa-deviantart fa-2x"></i></A>
+      <a href="http://instagram.com/ambertunnell" class="social-media-icon" rel="tooltip" title="Instagram" target="_blank"><i class="social_media fa fa-instagram fa-2x"></i></A>
+ </div>   
+</section>
+
+<section>
+  
+  <h1>email me</h1>
+  <a href="mailto:amber.tunnell@gmail.com">amber.tunnell@gmail.com</a>
+  
+</section>
+
+  
+</aside>
+
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  Amber Tunnell <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  
+  </span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'ambertunnelloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/';
+        var disqus_url = 'http://ambertunnell.github.io/blog/2014/10/06/all-of-the-javascript-basic-terms-and-concepts-for-beginners/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53821540-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <!-- hides sidebar when collapsed -->
+<script> $(document).ready(function(){  
+  $(".toggle-sidebar").click(function(){
+    $("aside.thirds").toggle();
+  });
+});</script>
+</body>
+</html>
