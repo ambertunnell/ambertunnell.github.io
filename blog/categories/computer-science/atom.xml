@@ -4,7 +4,7 @@
   <title><![CDATA[Category: computer science | amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/blog/categories/computer-science/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-10-07T12:12:18-04:00</updated>
+  <updated>2014-10-07T13:23:53-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Insertion Sort in Ruby]]></title>
+    <title type="html"><![CDATA[Sorting Algorithms Series: Insertion Sort]]></title>
     <link href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/"/>
     <updated>2014-08-23T16:01:26-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby</id>
@@ -77,16 +77,16 @@ end</p>
 <p>print InsertionSort.new([4,1,6,3,5,2]).sort #=> [1, 2, 3, 4, 5, 6]
 ```</p>
 
-<p><em>This is the second post of a series of posts on various sorting algorithms. See the first here: <a href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/">Bubble Sort</a></em></p>
+<p><em>This is the second post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Bubble Sort in Ruby]]></title>
-    <link href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/"/>
+    <title type="html"><![CDATA[Sorting Algorithms Series: Bubble Sort]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/"/>
     <updated>2014-08-20T21:37:50-04:00</updated>
-    <id>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby</id>
-    <content type="html"><![CDATA[<p><em>Sorting algorithms are rarely discussed in Ruby. Most sorting algorithm problems can be solved quite easily by using built-in Ruby methods. That being said, some people feel that it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on sorting algorithms in Ruby!</em></p>
+    <id>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort</id>
+    <content type="html"><![CDATA[<p><em>When I was learning Ruby, we never discussed sorting algorithms. It&rsquo;s my understanding that most sorting algorithm problems can be solved quite easily using built-in methods in most languages. That being said, it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on the most common sorting algorithms!</em></p>
 
 <p>We&rsquo;ll start with Bubble Sort.</p>
 
@@ -112,7 +112,7 @@ end</p>
 
 <p>Here&rsquo;s the bubble sort algorithm implemented in Ruby.</p>
 
-<p>```ruby bubble sort
+<p>```ruby Bubble Sort in Ruby
 class BubbleSort</p>
 
 <p>  def initialize(array)</p>
@@ -127,13 +127,13 @@ class BubbleSort</p>
 <pre><code>loop do 
   i = 1
   swap_number = 0
- while i &lt; @array.length 
-   if @array[i-1] &gt; @array[i]
-    @array[i-1], @array[i] = @array[i], @array[i-1] 
-    swap_number += 1
+   while i &lt; @array.length 
+     if @array[i-1] &gt; @array[i]
+      @array[i-1], @array[i] = @array[i], @array[i-1] 
+      swap_number += 1
+     end
+     i+=1
    end
-   i+=1
- end
   break if swap_number == 0
 end 
 return @array
@@ -146,13 +146,45 @@ return @array
 <p>print BubbleSort.new([4,1,2,6,3,5]).sort #=> [1, 2, 3, 4, 5, 6]
 ```</p>
 
+<p>And, here&rsquo;s it in JavaScript.</p>
+
+<p>```java Bubble Sort in JavaScript</p>
+
+<p>function bubbleSort(array) {</p>
+
+<pre><code>var swapNum;
+
+while (swapNum !== 0) {
+    swapNum = 0;
+    for (var i = 0; i &lt; array.length; i++) {
+        if (array[i] &gt; array[i + 1]) {
+
+            var first = array[i]; 
+            var second = array[i+1]; 
+
+            array[i] = second; 
+            array[i+1] = first;
+
+            swapNum++;
+        }
+    }
+
+}  
+return array;
+</code></pre>
+
+<p>}</p>
+
+<p>bubbleSort([4,1,2,6,3,5]); //=> [1, 2, 3, 4, 5, 6]
+```</p>
+
 <p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with an average and worst-case time complexity of О(n<sup>2</sup>).</p>
 
 <p>In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.</p>
 
 <p>That being said, bubble sort is still a very undesirable and inefficient sorting technique.</p>
 
-<p><em>This is the first post of a series of posts on various sorting algorithms.</em></p>
+<p><em>This is the first post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>
 ]]></content>
   </entry>
   

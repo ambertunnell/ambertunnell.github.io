@@ -4,7 +4,7 @@
   <title><![CDATA[amber tunnell]]></title>
   <link href="http://ambertunnell.github.io/atom.xml" rel="self"/>
   <link href="http://ambertunnell.github.io/"/>
-  <updated>2014-10-07T12:12:18-04:00</updated>
+  <updated>2014-10-07T13:23:53-04:00</updated>
   <id>http://ambertunnell.github.io/</id>
   <author>
     <name><![CDATA[Amber Tunnell]]></name>
@@ -503,7 +503,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Insertion Sort in Ruby]]></title>
+    <title type="html"><![CDATA[Sorting Algorithms Series: Insertion Sort]]></title>
     <link href="http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby/"/>
     <updated>2014-08-23T16:01:26-04:00</updated>
     <id>http://ambertunnell.github.io/blog/2014/08/23/insertion-sort-in-ruby</id>
@@ -589,16 +589,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><em>This is the second post of a series of posts on various sorting algorithms. See the first here: <a href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/">Bubble Sort</a></em></p>
+<p><em>This is the second post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Bubble Sort in Ruby]]></title>
-    <link href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/"/>
+    <title type="html"><![CDATA[Sorting Algorithms Series: Bubble Sort]]></title>
+    <link href="http://ambertunnell.github.io/blog/2014/08/20/bubble-sort/"/>
     <updated>2014-08-20T21:37:50-04:00</updated>
-    <id>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby</id>
-    <content type="html"><![CDATA[<p><em>Sorting algorithms are rarely discussed in Ruby. Most sorting algorithm problems can be solved quite easily by using built-in Ruby methods. That being said, some people feel that it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on sorting algorithms in Ruby!</em></p>
+    <id>http://ambertunnell.github.io/blog/2014/08/20/bubble-sort</id>
+    <content type="html"><![CDATA[<p><em>When I was learning Ruby, we never discussed sorting algorithms. It&rsquo;s my understanding that most sorting algorithm problems can be solved quite easily using built-in methods in most languages. That being said, it is important to understand the different sorting techniques available in computer science. Along those lines, here&rsquo;s a series of blog posts on the most common sorting algorithms!</em></p>
 
 <p>We&rsquo;ll start with Bubble Sort.</p>
 
@@ -624,7 +624,7 @@
 
 <p>Here&rsquo;s the bubble sort algorithm implemented in Ruby.</p>
 
-<figure class='code'><figcaption><span>bubble sort</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Bubble Sort in Ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -659,13 +659,13 @@
 </span><span class='line'>    <span class="kp">loop</span> <span class="k">do</span>
 </span><span class='line'>      <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span class='line'>      <span class="n">swap_number</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>     <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="vi">@array</span><span class="o">.</span><span class="n">length</span>
-</span><span class='line'>       <span class="k">if</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>        <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'>        <span class="n">swap_number</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>       <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="vi">@array</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'>         <span class="k">if</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'>          <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="vi">@array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>          <span class="n">swap_number</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>         <span class="k">end</span>
+</span><span class='line'>         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 </span><span class='line'>       <span class="k">end</span>
-</span><span class='line'>       <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-</span><span class='line'>     <span class="k">end</span>
 </span><span class='line'>      <span class="k">break</span> <span class="k">if</span> <span class="n">swap_number</span> <span class="o">==</span> <span class="mi">0</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>    <span class="k">return</span> <span class="vi">@array</span>
@@ -677,13 +677,64 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>And, here&rsquo;s it in JavaScript.</p>
+
+<figure class='code'><figcaption><span>Bubble Sort in JavaScript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">function</span> <span class="nf">bubbleSort</span><span class="o">(</span><span class="n">array</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">swapNum</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">while</span> <span class="o">(</span><span class="n">swapNum</span> <span class="o">!==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">swapNum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">var</span> <span class="n">first</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span><span class='line'>                <span class="n">var</span> <span class="n">second</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">second</span><span class="o">;</span>
+</span><span class='line'>                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">first</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">swapNum</span><span class="o">++;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">array</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">bubbleSort</span><span class="o">([</span><span class="mi">4</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">]);</span> <span class="c1">//=&gt; [1, 2, 3, 4, 5, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>One of the biggest problems with using bubble sort is that it isn&rsquo;t practical on large data sets. It is incredibly inefficient with an average and worst-case time complexity of О(n<sup>2</sup>).</p>
 
 <p>In the best-case where the array is already sorted, the time complexity is O(n) because it only has to do one pass of the array, whereas most other algorithms still have to go through all their steps even when given an already-sorted array.</p>
 
 <p>That being said, bubble sort is still a very undesirable and inefficient sorting technique.</p>
 
-<p><em>This is the first post of a series of posts on various sorting algorithms.</em></p>
+<p><em>This is the first post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="http://ambertunnell.github.io/blog/categories/sorting-algorithms/">here</a>.</em></p>
 ]]></content>
   </entry>
   
