@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Insertion Sort in Ruby"
+title: "Sorting Algorithms Series: Insertion Sort"
 date: 2014-08-23 16:01:26 -0400
 comments: true
 categories: [sorting algorithms, computer science]
@@ -55,4 +55,4 @@ end
 print InsertionSort.new([4,1,6,3,5,2]).sort #=> [1, 2, 3, 4, 5, 6]
 ```
 
-*This is the second post of a series of posts on various sorting algorithms. See the first here: [Bubble Sort](http://ambertunnell.github.io/blog/2014/08/20/bubble-sort-in-ruby/)*
+*This is the second post in a series of posts on various sorting algorithms in computer science. See the entire series <a href="/blog/categories/sorting-algorithms/">here</a>.*
